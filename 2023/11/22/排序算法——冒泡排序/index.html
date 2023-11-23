@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.seasalt-haiyan.top/image/bubble-sort.jpg">
 <meta property="article:published_time" content="2023-11-22T08:28:55.000Z">
-<meta property="article:modified_time" content="2023-11-22T09:09:35.729Z">
+<meta property="article:modified_time" content="2023-11-22T09:20:28.718Z">
 <meta property="article:author" content="Xu Haoyang">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="排序">
@@ -290,7 +290,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：几秒前
+                    本文最后更新于：16 小时前
                   
                 
               </p>
@@ -304,7 +304,7 @@
 <h1 id="算法详解"><a href="#算法详解" class="headerlink" title="算法详解"></a>算法详解</h1><p>以从小到大为例，冒泡算法是这样实现的：</p>
 <p>遍历原始数据，从第一个数开始，到<strong>倒数第二个</strong>数结束，比较当前数和下一个数的大小，如果当前数比下一个数大，则交换这两个数，这样可以将最大的数转移到末尾，接下来再次遍历，但到<strong>倒数第三个</strong>数结束，可以将第二大的数转移到倒数第二位，以此类推。</p>
 <p>动图演示：</p>
-<p><img src="https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2019/03/bubbleSort.gif" srcset="/img/loading.gif" lazyload alt="动图演示"></p>
 <p>优点：空间复杂度低，稳定性高</p>
 <p>缺点：时间复杂度，效率低</p>
 <h1 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h1><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">bubblesort</span><span class="hljs-params">(<span class="hljs-type">int</span> a[], <span class="hljs-type">int</span> n)</span>{<br>	<span class="hljs-type">int</span> i, j, temp;<br>	<span class="hljs-keyword">for</span>(i = <span class="hljs-number">1</span>; i &lt; n; i++){				<span class="hljs-comment">//外部循环 </span><br>		<span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; n - i; j++){		<span class="hljs-comment">//内部循环 </span><br>			<span class="hljs-keyword">if</span>(a[j] &gt; a[j + <span class="hljs-number">1</span>]){		<span class="hljs-comment">//比较相邻元素大小 </span><br>				temp = a[j];			<span class="hljs-comment">//交换值 </span><br>				a[j] = a[j + <span class="hljs-number">1</span>];<br>				a[j + <span class="hljs-number">1</span>] = temp;<br>			}<br>		}<br>	}<br>}<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>{<br>	<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; <br>	<span class="hljs-type">int</span> a[<span class="hljs-number">10</span>]={<span class="hljs-number">0</span>};<br>	<span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++){			<span class="hljs-comment">//写入数据 </span><br>		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>,&amp;a[i]);<br>	}<br>	bubblesort(a,<span class="hljs-number">10</span>);					<span class="hljs-comment">//排序 </span><br>	<br>	<span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++){			<span class="hljs-comment">//输出数据 </span><br>		<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d "</span>,a[i]);<br>	}<br>	 <br>} <br></code></pre></td></tr></tbody></table></figure>
