@@ -16,26 +16,27 @@
   <meta name="author" content="Xu Haoyang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型。它给 flexbox 的子元素之间提供了强大的空间分布和对齐能力。">
+    <meta name="description" content="qsort()函数是一种用于对数组快速排序的函数，他是一个通用的排序函数，支持对不同类型的元素进行排序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS Flex布局">
-<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:title" content="C语言库函数(快速排序)--qsort()">
+<meta property="og:url" content="https://blog.seasalt-haiyan.top/2023/11/20/C%E8%AF%AD%E8%A8%80%E5%BA%93%E5%87%BD%E6%95%B0-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-qsort/index.html">
 <meta property="og:site_name" content="Seasalt-haiyan&#39;s Blog">
-<meta property="og:description" content="Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型。它给 flexbox 的子元素之间提供了强大的空间分布和对齐能力。">
+<meta property="og:description" content="qsort()函数是一种用于对数组快速排序的函数，他是一个通用的排序函数，支持对不同类型的元素进行排序">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/flex.png">
-<meta property="article:published_time" content="2024-02-28T08:26:01.000Z">
-<meta property="article:modified_time" content="2024-02-28T11:33:39.379Z">
+<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/c.jpg">
+<meta property="article:published_time" content="2023-11-20T15:01:43.000Z">
+<meta property="article:modified_time" content="2024-02-28T11:38:32.062Z">
 <meta property="article:author" content="Xu Haoyang">
-<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta property="article:tag" content="排序">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/flex.png">
+<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/c.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CSS Flex布局 - Seasalt-haiyan&#39;s Blog</title>
+  <title>C语言库函数(快速排序)--qsort() - Seasalt-haiyan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSS Flex布局"></span>
+            <span id="subtitle" data-typed-text="C语言库函数(快速排序)--qsort()"></span>
           
         </div>
 
@@ -212,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-28 16:26" pubdate>
-          2024年2月28日 下午
+        <time datetime="2023-11-20 23:01" pubdate>
+          2023年11月20日 晚上
         </time>
       </span>
     
@@ -224,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          1.3k 字
         
       </span>
     
@@ -235,7 +236,7 @@
         
         
         
-          23 分钟
+          11 分钟
         
       </span>
     
@@ -280,12 +281,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSS Flex布局</h1>
+            <h1 id="seo-header">C语言库函数(快速排序)--qsort()</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：9 分钟前
+                    本文最后更新于：4 分钟前
                   
                 
               </p>
@@ -293,104 +294,43 @@
             
               <div class="markdown-body">
                 
-                <h1 id="flex布局的基本概念"><a href="#flex布局的基本概念" class="headerlink" title="flex布局的基本概念"></a>flex布局的基本概念</h1><ul>
-<li>flex布局是一种一维的布局模型，它给子元素之间提供了强大的空间分布和对齐能力。</li>
-<li>我们之所以说flex是一种一维的布局，是因为一个flex容器一次只能处理一个维度上的元素布局，一行或者一列。</li>
-<li>采用flex布局的元素，称为<strong>flex容器</strong>，它的所有子元素自动成为容器成员，称为<strong>flex项目</strong>，容器存在两根轴，默认项目按照主轴排列。</li>
-</ul>
-<h1 id="flexbox的两根轴线"><a href="#flexbox的两根轴线" class="headerlink" title="flexbox的两根轴线"></a>flexbox的两根轴线</h1><p>当使用flex布局时，首先应该想到两根轴线——主轴和交叉轴，主轴由<code>flex-direction</code>定义，另一根轴垂直于它，flexbox的所有属性都跟这两根轴线有关。</p>
-<p>首先，先设置flex容器</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.container</span>&#123;<br>    <span class="hljs-attribute">display</span>: flex | inline-flex; //块元素使用<span class="hljs-attribute">flex</span>，行内块元素使用inline-<span class="hljs-attribute">flex</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h2><ul>
-<li><code>flex-direction</code></li>
-<li><code>flex-wrap</code></li>
-<li><code>flex-flow</code></li>
-<li><code>justify-content</code></li>
-<li><code>align-items</code></li>
-<li><code>align-content</code></li>
-</ul>
-<h2 id="主轴"><a href="#主轴" class="headerlink" title="主轴"></a>主轴</h2><p>主轴由<code>flex-direction</code>定义，可以取四个值</p>
+                <blockquote>
+<p>qsort()函数是一种用于对数组快速排序的函数，他是一个通用的排序函数，支持对不同类型的元素进行排序</p>
+</blockquote>
+<h1 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h1><p>qsort()是包含在C语言标准库&lt;stdlib.h&gt;中的函数，所以想使用该函数应在程序前引用该头文件</p>
+<p><code>#include &lt;stdlib.h&gt;</code></p>
+<h1 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h1><p><code>void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*))</code></p>
 <ul>
-<li><code>row</code></li>
-<li><code>row-reverse</code></li>
-<li><code>column</code></li>
-<li><code>column-reverse</code></li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-direction</span>: row | row-reverse | column | column-reverse;<br></code></pre></td></tr></table></figure>
-<ul>
-<li>row和row-reverse分别是水平排列和水平逆序排列<br><img src="/./CSS-flex%E5%B8%83%E5%B1%80/1.svg" srcset="/img/loading.gif" lazyload></li>
-<li>column 和 column-reverse 分别是垂直排列和垂直逆序排列<br><img src="/./CSS-flex%E5%B8%83%E5%B1%80/2.svg" srcset="/img/loading.gif" lazyload></li>
-</ul>
-<h2 id="交叉轴"><a href="#交叉轴" class="headerlink" title="交叉轴"></a>交叉轴</h2><p>交叉轴垂直于主轴，所以如果你的<code>flex-direction</code>设置成了<code>row</code>或者<code>row-reverse</code>的话，交叉轴的方向就是沿着上下方向延伸的。</p>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/3.svg" srcset="/img/loading.gif" lazyload></p>
-<p>如果主轴方向设成了<code>column</code>或者<code>column-reverse</code>交叉轴就是水平方向</p>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/4.svg" srcset="/img/loading.gif" lazyload></p>
-<h1 id="用-flex-wrap-实现多行-Flex-容器"><a href="#用-flex-wrap-实现多行-Flex-容器" class="headerlink" title="用 flex-wrap 实现多行 Flex 容器"></a>用 flex-wrap 实现多行 Flex 容器</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-wrap</span>: no-wrap | wrap | wrap-reverse;<br></code></pre></td></tr></table></figure>
-<ul>
-<li><code>nowrap</code> （默认）不换行</li>
-</ul>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/5.png" srcset="/img/loading.gif" lazyload></p>
-<ul>
-<li><code>wrap</code> 换行，第一行在上方</li>
-</ul>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/6.png" srcset="/img/loading.gif" lazyload></p>
-<ul>
-<li><code>wrap-reverse</code> 换行，第一行在下方</li>
-</ul>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/7.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="简写属性-flex-flow"><a href="#简写属性-flex-flow" class="headerlink" title="简写属性 flex-flow"></a>简写属性 flex-flow</h1><p>你可以将两个属性 <code>flex-direction</code> 和 <code>flex-wrap</code> 组合为简写属性 <code>flex-flow</code>。第一个指定的值为 <code>flex-direction</code> ，第二个指定的值为 <code>flex-wrap</code>.</p>
-<h1 id="元素间的对齐和空间分配"><a href="#元素间的对齐和空间分配" class="headerlink" title="元素间的对齐和空间分配"></a>元素间的对齐和空间分配</h1><p>Flexbox 的一个关键特性是能够设置 flex 元素沿主轴方向和交叉轴方向的对齐方式，以及它们之间的空间分配。</p>
-<h2 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h2><p><code>align-items</code>属性可以使元素在交叉轴方向对齐</p>
-<p>这个属性的初始值为<code>stretch</code>，这就是为什么 flex 元素会默认被拉伸到最高元素的高度。实际上，它们被拉伸来填满 flex 容器——最高的元素定义了容器的高度。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">align-items</span>:flex-start | flex-end | center | baseline | stretch;<br>//Streth 拉伸（子元素不设置高度时的默认值)<br></code></pre></td></tr></table></figure>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/9.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h2><p><code>justify-content</code>属性用来使元素在主轴方向上对齐，主轴方向是通过 <code>flex-direction</code> 设置的方向。</p>
-<p>你可以把值设置为<code>space-between</code>，把元素排列好之后的剩余空间拿出来，平均分配到元素之间，所以元素之间间隔相等。或者使用<code>space-around</code>，使每个元素的左右空间相等。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around;<br></code></pre></td></tr></table></figure>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/8.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="flex元素上的属性"><a href="#flex元素上的属性" class="headerlink" title="flex元素上的属性"></a>flex元素上的属性</h1><p>为了更好地控制flex元素，有四个属性可以作用于他们：</p>
-<ul>
-<li><code>order</code></li>
-<li><code>flex-grow</code></li>
-<li><code>flex-shrink</code></li>
-<li><code>flex-basis</code></li>
-</ul>
-<p>在考虑这几个属性的作用之前，需要先了解一下<strong>可用空间</strong>这个概念，这几个flex属性其实就是改变了flex容器中的可用空间的行为，同时，可用空间对于flex元素的对齐行为也是很重要的。</p>
-<p>假设在 1 个 500px 的容器中，我们有 3 个 100px 宽的元素，那么这 3 个元素需要占 300px 的宽，剩下 200px 的可用空间。在默认情况下，flexbox 的行为会把这 200px 的空间留在最后一个元素的后面。</p>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/10.svg" srcset="/img/loading.gif" lazyload></p>
-<p>如果期望这些元素能自动地扩展去填充满剩下的空间，那么我们需要去控制可用空间在这几个元素间如何分配，这就是元素上的那些 flex 属性要做的事。</p>
-<h2 id="order属性"><a href="#order属性" class="headerlink" title="order属性"></a>order属性</h2><p><code>order</code>属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
-<p><img src="/./CSS-flex%E5%B8%83%E5%B1%80/11.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="Flex-元素属性：flex-grow"><a href="#Flex-元素属性：flex-grow" class="headerlink" title="Flex 元素属性：flex-grow"></a>Flex 元素属性：flex-grow</h2><ul>
-<li><p><code>flex-grow</code>属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<li><p>base -&gt; 数组名</p>
 </li>
-<li><p>如果容器压根就没有剩余空间，那么即使设置了<code>flex-grow</code>也不会生效。</p>
+<li><p>nitems -&gt;元素个数</p>
 </li>
-<li><p><code>flex-grow</code>的默认值是0，子项目不做任何比例拉伸，如果将三个子项目的flex-grow属性都设为1，那么他们将按照1:1:1的比例分配剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
+<li><p>size -&gt; 数组元素所占字节（int,char等所占字节）</p>
 </li>
+<li><p>(*compar)(const void <em>, const void</em>) -&gt; 排序原则（递增，递减等）</p>
+<h2 id="排序原则？"><a href="#排序原则？" class="headerlink" title="排序原则？"></a>排序原则？</h2><p>通过定义一个函数compar，通过这个函数<strong>返回的参数</strong>来去确定排序规则</p>
+<p><strong>注意</strong>：compar函数中参数需要以<strong>const void *a,const void *b**的形式来定义，表示a，b的类型是“未确定”（void），在return时候进行强制类型转换为int型，</strong>*(int*)a-*(int*)b**表示递增顺序，如果递减只需要更换a和b的位置</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">compar</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *a,<span class="hljs-type">const</span> <span class="hljs-type">void</span> *b)</span> &#123;<br>	<span class="hljs-keyword">return</span> *(<span class="hljs-type">int</span>*)a-*(<span class="hljs-type">int</span>*)b;<span class="hljs-comment">//递增</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="Flex-元素属性：flex-shrink"><a href="#Flex-元素属性：flex-shrink" class="headerlink" title="Flex 元素属性：flex-shrink"></a>Flex 元素属性：flex-shrink</h2><ul>
-<li><p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
-</li>
-<li><p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
-</li>
-<li><p>负值对该属性无效，如果容器还有剩余空间，同样设置<code>flex-shrink</code>也是无效的。</p>
-</li>
-<li><p>如果不希望压缩，我们可以选择换行，只需要设置<code>flex-wrap</code>为<code>wrap</code>就好。</p>
-</li>
-</ul>
-<h2 id="Flex-元素属性：-flex-basis"><a href="#Flex-元素属性：-flex-basis" class="headerlink" title="Flex 元素属性： flex-basis"></a>Flex 元素属性： flex-basis</h2><ul>
-<li><p><code>flex-basis</code> 定义了该元素的空间大小，flex 容器里除了元素所占的空间以外的富余空间就是可用空间。该属性的默认值是 <code>auto</code>。此时，浏览器会检测这个元素是否具有确定的尺寸。在上面的例子中，所有元素都设定了宽度（width）为 100px，所以 <code>flex-basis</code> 的值为 100px。</p>
-</li>
-<li><p>如果没有给元素设定尺寸，<code>flex-basis</code> 的值采用元素内容的尺寸。这就解释了：我们给只要给 Flex 元素的父元素声明 <code>display: flex</code>，所有子元素就会排成一行，且自动分配小大以充分展示元素的内容。</p>
-</li>
-</ul>
-<h2 id="Flex属性的简写"><a href="#Flex属性的简写" class="headerlink" title="Flex属性的简写"></a>Flex属性的简写</h2><ul>
-<li>flex属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</li>
-<li>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>)。</li>
-<li>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</li>
-</ul>
+<h1 id="不同类型元素排序"><a href="#不同类型元素排序" class="headerlink" title="不同类型元素排序"></a>不同类型元素排序</h1><p>对于不同的类型，只需要改变compar函数就可以</p>
+<h2 id="整形（int）"><a href="#整形（int）" class="headerlink" title="整形（int）"></a>整形（int）</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">compar</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *a, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *b)</span>&#123;<br>    <span class="hljs-keyword">return</span> *(<span class="hljs-type">int</span>*)a-*(<span class="hljs-type">int</span>*)b;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<h2 id="浮点型（double）"><a href="#浮点型（double）" class="headerlink" title="浮点型（double）"></a>浮点型（double）</h2><p><strong>注意！浮点数存在精度损失<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="浮点数并不精确，5.000实际上可能是5.000000000003">[1]</span></a></sup>的问题，运算可能会出错，所以我们选择比较的方式</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">compar</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *a, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *b)</span>&#123;<br>    <span class="hljs-keyword">return</span> *(<span class="hljs-type">double</span>*)a&gt;*(<span class="hljs-type">double</span>*)b?<span class="hljs-number">1</span>:<span class="hljs-number">-1</span>;<span class="hljs-comment">//三目运算符，如果前大于后，输出1，反之输出-1</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="字符型（char）"><a href="#字符型（char）" class="headerlink" title="字符型（char）"></a>字符型（char）</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">compar</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *a, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *b)</span>&#123;<br>    <span class="hljs-keyword">return</span> *(<span class="hljs-type">char</span>*)a-*(<span class="hljs-type">char</span>*)b;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><p>升序排序一个10位数数组</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>    <br><span class="hljs-type">int</span> <span class="hljs-title function_">compar</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">void</span> *a, <span class="hljs-type">const</span> <span class="hljs-type">void</span> *b)</span>&#123;<br>    <span class="hljs-keyword">return</span> *(<span class="hljs-type">int</span>*)a-*(<span class="hljs-type">int</span>*)b;<br>&#125;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> a[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">2</span>,<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">10</span>&#125;;<br>    qsort(a,<span class="hljs-number">10</span>,<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>),compar);<br>    <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,a[i]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>输出结果</p>
+<p><code>1 2 3 4 5 6 7 8 9 10</code></p>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>浮点数并不精确，5.000实际上可能是5.000000000003
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             
@@ -408,7 +348,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" class="category-chain-item">前端学习</a>
+  <a href="/categories/C%E8%AF%AD%E8%A8%80/" class="category-chain-item">C语言</a>
   
   
 
@@ -423,7 +363,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CSS/" class="print-no-link">#CSS</a>
+        <a href="/tags/C-C/" class="print-no-link">#C/C++</a>
+      
+        <a href="/tags/%E6%8E%92%E5%BA%8F/" class="print-no-link">#排序</a>
       
     </div>
   
@@ -435,8 +377,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSS Flex布局</div>
-      <div>https://blog.seasalt-haiyan.top/2024/02/28/CSS-flex布局/</div>
+      <div>C语言库函数(快速排序)--qsort()</div>
+      <div>https://blog.seasalt-haiyan.top/2023/11/20/C语言库函数-快速排序-qsort/</div>
     </div>
     <div class="license-meta">
       
@@ -448,7 +390,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月28日</div>
+          <div>2023年11月20日</div>
         </div>
       
       
@@ -491,12 +433,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2023/11/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" title="排序算法——冒泡排序">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">排序算法——冒泡排序</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" title="排序算法——冒泡排序">
-                        <span class="hidden-mobile">排序算法——冒泡排序</span>
+                      <a href="/2023/11/20/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" title="C语言中常用的字符串函数">
+                        <span class="hidden-mobile">C语言中常用的字符串函数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
