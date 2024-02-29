@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>CSS 浮动布局</title>
+    <link href="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/"/>
+    <url>/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/</url>
+    
+    <content type="html"><![CDATA[<p>在说浮动之前，我们先来了解一下<strong>标准流</strong>。</p><ul class="lvl-0"><li class="lvl-2">标准流又称为普通流，是浏览器<strong>默认</strong>的排版方式。</li><li class="lvl-2">标准流中元素会自动按照从左往右从上往下进行排列。</li></ul><h1>浮动 float</h1><p><strong>什么是浮动？</strong></p><p>使元素脱离了标准流，向左或向又移动，直到碰到父元素或另一个浮动元素的边缘为止。</p><p>最初，引入<code>float</code>属性是为了能让Web开发人员实现简单的布局，包括在一列文本中浮动的图像，文字环绕在它的左边或右边。你可能在报纸版面看到过。</p><p><strong>让盒子浮动起来</strong></p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.son1</span>&#123;<br>    <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<br>&#125; //设置class为son1的盒子向左浮动<br></code></pre></td></tr></table></figure><p>参数</p><table><thead><tr><th style="text-align:center">属性值</th><th style="text-align:center">描述</th></tr></thead><tbody><tr><td style="text-align:center">none</td><td style="text-align:center">元素不浮动</td></tr><tr><td style="text-align:center">left</td><td style="text-align:center">元素向左浮动</td></tr><tr><td style="text-align:center">right</td><td style="text-align:center">元素向右浮动</td></tr></tbody></table><h2 id="特性">特性</h2><ol><li class="lvl-3"><p>加了浮动的元素盒子是“浮起来”的，脱离了标准流，漂浮在其他标准盒子上，原来的位置空了下来，漏给了标准流盒子</p></li><li class="lvl-3"><p>浮动元素具有<strong>行内块元素</strong>特性</p><ol><li class="lvl-6">任何元素都可以浮动，不管之前是什么模式的元素，添加浮动之后都具有行内块元素相似的特性。</li><li class="lvl-6">元素设置浮动后，原来设置的宽高起作用，默认在当前包含块左上一排，如果前面有块级元素，会排在元素的下面。</li></ol></li></ol><img src="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/1.png" class="" title="这是图片的说明"><ol start="3"><li class="lvl-6"><p>如果原来没有设置宽高，浮动后根据内容决定大小</p></li></ol><img src="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/2.png" class="" title="这是图片的说明"><img src="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/3.png" class="" title="这是图片的说明"><ol start="3"><li class="lvl-3"><p>浮动的元素是相互贴靠在一起的(<strong>没有缝隙</strong>)，如果父级宽度装不下这些浮动的盒子，多出的盒子会<strong>另起一行</strong>对齐。</p></li><li class="lvl-3"><p>浮动元素<strong>不会遮挡</strong>标准流中的文字。</p></li></ol><h2 id="清除浮动">清除浮动</h2><p>我们发现，一个浮动元素会被移出正常文档流，且其他元素会显示在它的下方。如果我们不想让剩余元素也收到浮动元素的影响，我们需要<strong>清除浮动</strong></p><ul class="lvl-0"><li class="lvl-2"><p>清除浮动的本质是<strong>清除浮动造成的影响</strong></p></li><li class="lvl-2"><p>如果父盒子本身有高度，则不需要清除浮动</p></li><li class="lvl-2"><p>清除浮动之后，父级就会根据浮动的子盒子自动检测高度，父级有了高度，就不会影响下面的标准流了。</p></li><li class="lvl-2"><p>清除浮动主要是为了解决父级元素因为子级浮动引起的内部高度为0的问题</p></li></ul><h3 id="清除浮动的方法">清除浮动的方法</h3><ol><li class="lvl-3"><p>额外标签法</p></li><li class="lvl-3"><p>父级添加<code>overflow</code>属性</p></li><li class="lvl-3"><p>父级添加<code>after</code>伪元素</p></li><li class="lvl-3"><p>父级添加双伪元素</p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CSS Flex布局</title>
     <link href="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/"/>
     <url>/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/</url>
