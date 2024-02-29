@@ -16,26 +16,26 @@
   <meta name="author" content="Xu Haoyang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="float 属性最初只用于在成块的文本内浮动图像，但是现在它已成为在网页上创建多列布局的最常用工具之一。">
+    <meta name="description" content="定位的整个想法是允许我们覆盖上面描述的基本文档流行为，以产生有趣的效果。如果你想稍微改变布局中一些盒子的位置，或者始终停留在浏览器窗口内的相同位置，无论页面滚动多少？定位使这种布局工作成为可能。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS 浮动布局">
-<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:title" content="CSS 定位">
+<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/02/29/CSS-%E5%AE%9A%E4%BD%8D/index.html">
 <meta property="og:site_name" content="Seasalt-haiyan&#39;s Blog">
-<meta property="og:description" content="float 属性最初只用于在成块的文本内浮动图像，但是现在它已成为在网页上创建多列布局的最常用工具之一。">
+<meta property="og:description" content="定位的整个想法是允许我们覆盖上面描述的基本文档流行为，以产生有趣的效果。如果你想稍微改变布局中一些盒子的位置，或者始终停留在浏览器窗口内的相同位置，无论页面滚动多少？定位使这种布局工作成为可能。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/float.png">
-<meta property="article:published_time" content="2024-02-29T10:52:09.000Z">
-<meta property="article:modified_time" content="2024-02-29T11:30:51.580Z">
+<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/position.png">
+<meta property="article:published_time" content="2024-02-29T11:38:26.000Z">
+<meta property="article:modified_time" content="2024-02-29T12:06:04.919Z">
 <meta property="article:author" content="Xu Haoyang">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/float.png">
+<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/position.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CSS 浮动布局 - Seasalt-haiyan&#39;s Blog</title>
+  <title>CSS 定位 - Seasalt-haiyan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSS 浮动布局"></span>
+            <span id="subtitle" data-typed-text="CSS 定位"></span>
           
         </div>
 
@@ -212,7 +212,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-29 18:52" pubdate>
+        <time datetime="2024-02-29 19:38" pubdate>
           2024年2月29日 晚上
         </time>
       </span>
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          765 字
+          1.1k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          7 分钟
+          10 分钟
         
       </span>
     
@@ -280,12 +280,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSS 浮动布局</h1>
+            <h1 id="seo-header">CSS 定位</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：36 分钟前
+                    本文最后更新于：1 分钟前
                   
                 
               </p>
@@ -293,100 +293,124 @@
             
               <div class="markdown-body">
                 
-                <p>在说浮动之前，我们先来了解一下<strong>标准流</strong>。</p>
-<ul class="lvl-0">
-<li class="lvl-2">标准流又称为普通流，是浏览器<strong>默认</strong>的排版方式。</li>
-<li class="lvl-2">标准流中元素会自动按照从左往右从上往下进行排列。</li>
-</ul>
-<h1>浮动 float</h1>
-<p><strong>什么是浮动？</strong></p>
-<p>使元素脱离了标准流，向左或向又移动，直到碰到父元素或另一个浮动元素的边缘为止。</p>
-<p>最初，引入<code>float</code>属性是为了能让Web开发人员实现简单的布局，包括在一列文本中浮动的图像，文字环绕在它的左边或右边。你可能在报纸版面看到过。</p>
-<p><strong>让盒子浮动起来</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.son1</span>&#123;<br>    <span class="hljs-attribute">float</span><span class="hljs-selector-pseudo">:left</span>;<br>&#125; //设置class为son1的盒子向左浮动<br></code></pre></td></tr></table></figure>
-<p>参数</p>
+                <h1>定位 position</h1>
+<p><strong>什么是定位？</strong></p>
+<p>定位的整个想法是允许我们覆盖上面描述的基本文档流行为，以产生有趣的效果。如果你想稍微改变布局中一些盒子的位置，使它们的默认布局流程位置稍微有点古怪，不舒服的感觉呢？定位是你的工具。或者，如果你想要创建一个浮动在页面其他部分顶部的 UI 元素，并且/或者始终停留在浏览器窗口内的相同位置，无论页面滚动多少？定位使这种布局工作成为可能。</p>
+<p>CSS提供了许多不同类型的定位，你可以对HTML元素生效。要使某个元素上的特定类型的定位，我们使用<code>position</code>属性。</p>
+<img src="/2024/02/29/CSS-%E5%AE%9A%E4%BD%8D/1.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.son1</span>&#123;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">10px</span>;<br>&#125;//设置class为son1的盒子为绝对定位，距离父元素上边线<span class="hljs-number">10px</span><br></code></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">属性值</th>
-<th style="text-align:center">描述</th>
+<th style="text-align:center">值</th>
+<th style="text-align:center">语义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">none</td>
-<td style="text-align:center">元素不浮动</td>
+<td style="text-align:center">static</td>
+<td style="text-align:center">静态定位</td>
 </tr>
 <tr>
-<td style="text-align:center">left</td>
-<td style="text-align:center">元素向左浮动</td>
+<td style="text-align:center">relative</td>
+<td style="text-align:center">相对定位</td>
 </tr>
 <tr>
-<td style="text-align:center">right</td>
-<td style="text-align:center">元素向右浮动</td>
+<td style="text-align:center">absolute</td>
+<td style="text-align:center">绝对定位</td>
+</tr>
+<tr>
+<td style="text-align:center">fixed</td>
+<td style="text-align:center">固定定位</td>
+</tr>
+<tr>
+<td style="text-align:center">sticky</td>
+<td style="text-align:center">粘性定位</td>
 </tr>
 </tbody>
 </table>
-<h2 id="特性">特性</h2>
-<ol>
-<li class="lvl-3">
-<p>加了浮动的元素盒子是“浮起来”的，脱离了标准流，漂浮在其他标准盒子上，原来的位置空了下来，漏给了标准流盒子</p>
-</li>
-<li class="lvl-3">
-<p>浮动元素具有<strong>行内块元素</strong>特性</p>
-<ol>
-<li class="lvl-6">任何元素都可以浮动，不管之前是什么模式的元素，添加浮动之后都具有行内块元素相似的特性。</li>
-<li class="lvl-6">元素设置浮动后，原来设置的宽高起作用，默认在当前包含块左上一排，如果前面有块级元素，会排在元素的下面。</li>
-</ol>
-</li>
-</ol>
-<img src="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/1.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<ol start="3">
-<li class="lvl-6">
-<p>如果原来没有设置宽高，浮动后根据内容决定大小</p>
-</li>
-</ol>
-<img src="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/2.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<img src="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/3.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<ol start="3">
-<li class="lvl-3">
-<p>浮动的元素是相互贴靠在一起的(<strong>没有缝隙</strong>)，如果父级宽度装不下这些浮动的盒子，多出的盒子会<strong>另起一行</strong>对齐。</p>
-</li>
-<li class="lvl-3">
-<p>浮动元素<strong>不会遮挡</strong>标准流中的文字。</p>
-</li>
-</ol>
-<h2 id="清除浮动">清除浮动</h2>
-<p>我们发现，一个浮动元素会被移出正常文档流，且其他元素会显示在它的下方。如果我们不想让剩余元素也收到浮动元素的影响，我们需要<strong>清除浮动</strong></p>
+<h2 id="静态定位">静态定位</h2>
+<p>静态定位是每个元素获取的默认值——它只是意味着“将元素放入它在文档布局流中的正常位置”——这里没有什么特别的</p>
+<h2 id="相对定位">相对定位</h2>
+<p>相对定位是我们将要看的第一个位置类型。它与静态定位非常相似，但是他有这几个特点</p>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>清除浮动的本质是<strong>清除浮动造成的影响</strong></p>
+<p>不脱离标准流，保留原来位置</p>
 </li>
 <li class="lvl-2">
-<p>如果父盒子本身有高度，则不需要清除浮动</p>
-</li>
-<li class="lvl-2">
-<p>清除浮动之后，父级就会根据浮动的子盒子自动检测高度，父级有了高度，就不会影响下面的标准流了。</p>
-</li>
-<li class="lvl-2">
-<p>清除浮动主要是为了解决父级元素因为子级浮动引起的内部高度为0的问题</p>
+<p>参考点：<strong>原来的自身位置</strong></p>
 </li>
 </ul>
-<h3 id="清除浮动的方法">清除浮动的方法</h3>
-<ol>
-<li class="lvl-3">
-<p>额外标签法</p>
+<p>参考点是原来的自身位置，那么如何改变元素位置？</p>
+<h2 id="介绍top、bottom、left-和-right">介绍top、bottom、left 和 right</h2>
+<p><code>top</code>,<code>bottom</code>,<code>left</code>,<code>right</code>来精确制定要将定位元素移动到的位置。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">语义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">top</td>
+<td style="text-align:center">定位元素距离其父元素的上边线的距离</td>
+</tr>
+<tr>
+<td style="text-align:center">bottom</td>
+<td style="text-align:center">定位元素距离其父元素的下边线的距离</td>
+</tr>
+<tr>
+<td style="text-align:center">right</td>
+<td style="text-align:center">定位元素距离其父元素的右边线的距离</td>
+</tr>
+<tr>
+<td style="text-align:center">left</td>
+<td style="text-align:center">定位元素距离其父元素的左边线的距离</td>
+</tr>
+</tbody>
+</table>
+<h2 id="绝对定位">绝对定位</h2>
+<p>绝对定位带来了非常不同的结果，他有如下几个特点</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>脱离标准流，不占用原来位置</p>
 </li>
-<li class="lvl-3">
-<p>父级添加<code>overflow</code>属性</p>
+<li class="lvl-2">
+<p>参考点：离自己最近的设置了定位的父元素移动</p>
 </li>
-<li class="lvl-3">
-<p>父级添加<code>after</code>伪元素</p>
+<li class="lvl-2">
+<p>如果没有祖先元素，或者祖先元素没有定位，则以浏览器为参照物</p>
 </li>
-<li class="lvl-3">
-<p>父级添加双伪元素</p>
+<li class="lvl-2">
+<p>行内元素设置了固定定位和绝对定位，会转为块。</p>
 </li>
-</ol>
+</ul>
+<h2 id="固定定位">固定定位</h2>
+<p>还有一种类型的定位覆盖——fixed。这与绝对定位的工作方式完全相同，只有一个主要区别，<strong>固定定位参考点永远是浏览器窗口</strong>，这意味着你可以利用固定定位创建导航菜单之类的元素。</p>
+<h2 id="粘性定位">粘性定位</h2>
+<p>还有一个可用的位置称为sticky，它基本上是相对定位和固定定位的混合体，有着如下几个特点</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>以浏览器的窗口为参照点移动元素（固定定位）</p>
+</li>
+<li class="lvl-2">
+<p>占有原来的位置，不脱离标准流（相对定位）</p>
+</li>
+<li class="lvl-2">
+<p>必须添加<code>top</code>,<code>bottom</code>,<code>left</code>,<code>right</code>其中一个才有效，跟页面滚动搭配使用，例如，它可用于使导航栏随页面滚动直到特定点，然后粘贴在页面顶部。</p>
+</li>
+</ul>
+<h2 id="“子绝父相”的思想">“子绝父相”的思想</h2>
+<p>子级使用绝对定位，父级则需要相对定位</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>父盒子需要加定位限制子盒子在父盒子内显示</p>
+</li>
+<li class="lvl-2">
+<p>父盒子布局时，需要占有位置</p>
+</li>
+</ul>
 
                 
               </div>
@@ -432,8 +456,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSS 浮动布局</div>
-      <div>https://blog.seasalt-haiyan.top/2024/02/29/CSS-浮动布局/</div>
+      <div>CSS 定位</div>
+      <div>https://blog.seasalt-haiyan.top/2024/02/29/CSS-定位/</div>
     </div>
     <div class="license-meta">
       
@@ -488,18 +512,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/29/CSS-%E5%AE%9A%E4%BD%8D/" title="CSS 定位">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS 定位</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/" title="CSS Flex布局">
-                        <span class="hidden-mobile">CSS Flex布局</span>
+                      <a href="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/" title="CSS 浮动布局">
+                        <span class="hidden-mobile">CSS 浮动布局</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

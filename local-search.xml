@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>CSS 定位</title>
+    <link href="/2024/02/29/CSS-%E5%AE%9A%E4%BD%8D/"/>
+    <url>/2024/02/29/CSS-%E5%AE%9A%E4%BD%8D/</url>
+    
+    <content type="html"><![CDATA[<h1>定位 position</h1><p><strong>什么是定位？</strong></p><p>定位的整个想法是允许我们覆盖上面描述的基本文档流行为，以产生有趣的效果。如果你想稍微改变布局中一些盒子的位置，使它们的默认布局流程位置稍微有点古怪，不舒服的感觉呢？定位是你的工具。或者，如果你想要创建一个浮动在页面其他部分顶部的 UI 元素，并且/或者始终停留在浏览器窗口内的相同位置，无论页面滚动多少？定位使这种布局工作成为可能。</p><p>CSS提供了许多不同类型的定位，你可以对HTML元素生效。要使某个元素上的特定类型的定位，我们使用<code>position</code>属性。</p><img src="/2024/02/29/CSS-%E5%AE%9A%E4%BD%8D/1.png" class="" title="这是图片的说明"><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.son1</span>&#123;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">10px</span>;<br>&#125;//设置class为son1的盒子为绝对定位，距离父元素上边线<span class="hljs-number">10px</span><br></code></pre></td></tr></table></figure><table><thead><tr><th style="text-align:center">值</th><th style="text-align:center">语义</th></tr></thead><tbody><tr><td style="text-align:center">static</td><td style="text-align:center">静态定位</td></tr><tr><td style="text-align:center">relative</td><td style="text-align:center">相对定位</td></tr><tr><td style="text-align:center">absolute</td><td style="text-align:center">绝对定位</td></tr><tr><td style="text-align:center">fixed</td><td style="text-align:center">固定定位</td></tr><tr><td style="text-align:center">sticky</td><td style="text-align:center">粘性定位</td></tr></tbody></table><h2 id="静态定位">静态定位</h2><p>静态定位是每个元素获取的默认值——它只是意味着“将元素放入它在文档布局流中的正常位置”——这里没有什么特别的</p><h2 id="相对定位">相对定位</h2><p>相对定位是我们将要看的第一个位置类型。它与静态定位非常相似，但是他有这几个特点</p><ul class="lvl-0"><li class="lvl-2"><p>不脱离标准流，保留原来位置</p></li><li class="lvl-2"><p>参考点：<strong>原来的自身位置</strong></p></li></ul><p>参考点是原来的自身位置，那么如何改变元素位置？</p><h2 id="介绍top、bottom、left-和-right">介绍top、bottom、left 和 right</h2><p><code>top</code>,<code>bottom</code>,<code>left</code>,<code>right</code>来精确制定要将定位元素移动到的位置。</p><table><thead><tr><th style="text-align:center">属性</th><th style="text-align:center">语义</th></tr></thead><tbody><tr><td style="text-align:center">top</td><td style="text-align:center">定位元素距离其父元素的上边线的距离</td></tr><tr><td style="text-align:center">bottom</td><td style="text-align:center">定位元素距离其父元素的下边线的距离</td></tr><tr><td style="text-align:center">right</td><td style="text-align:center">定位元素距离其父元素的右边线的距离</td></tr><tr><td style="text-align:center">left</td><td style="text-align:center">定位元素距离其父元素的左边线的距离</td></tr></tbody></table><h2 id="绝对定位">绝对定位</h2><p>绝对定位带来了非常不同的结果，他有如下几个特点</p><ul class="lvl-0"><li class="lvl-2"><p>脱离标准流，不占用原来位置</p></li><li class="lvl-2"><p>参考点：离自己最近的设置了定位的父元素移动</p></li><li class="lvl-2"><p>如果没有祖先元素，或者祖先元素没有定位，则以浏览器为参照物</p></li><li class="lvl-2"><p>行内元素设置了固定定位和绝对定位，会转为块。</p></li></ul><h2 id="固定定位">固定定位</h2><p>还有一种类型的定位覆盖——fixed。这与绝对定位的工作方式完全相同，只有一个主要区别，<strong>固定定位参考点永远是浏览器窗口</strong>，这意味着你可以利用固定定位创建导航菜单之类的元素。</p><h2 id="粘性定位">粘性定位</h2><p>还有一个可用的位置称为sticky，它基本上是相对定位和固定定位的混合体，有着如下几个特点</p><ul class="lvl-0"><li class="lvl-2"><p>以浏览器的窗口为参照点移动元素（固定定位）</p></li><li class="lvl-2"><p>占有原来的位置，不脱离标准流（相对定位）</p></li><li class="lvl-2"><p>必须添加<code>top</code>,<code>bottom</code>,<code>left</code>,<code>right</code>其中一个才有效，跟页面滚动搭配使用，例如，它可用于使导航栏随页面滚动直到特定点，然后粘贴在页面顶部。</p></li></ul><h2 id="“子绝父相”的思想">“子绝父相”的思想</h2><p>子级使用绝对定位，父级则需要相对定位</p><ul class="lvl-0"><li class="lvl-2"><p>父盒子需要加定位限制子盒子在父盒子内显示</p></li><li class="lvl-2"><p>父盒子布局时，需要占有位置</p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CSS 浮动布局</title>
     <link href="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/"/>
     <url>/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/</url>
