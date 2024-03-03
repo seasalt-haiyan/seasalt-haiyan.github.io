@@ -16,26 +16,26 @@
   <meta name="author" content="Xu Haoyang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型。它给 flexbox 的子元素之间提供了强大的空间分布和对齐能力。">
+    <meta name="description" content="JavaScript（JS）是一种具有函数优先特性的轻量级、解释型或者说即时编译型的编程语言。具体地说，JavaScript 是一种基于原型、多范式、单线程的动态语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS Flex布局">
-<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/index.html">
+<meta property="og:title" content="JavaScript基础">
+<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/03/03/JavaScript%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Seasalt-haiyan&#39;s Blog">
-<meta property="og:description" content="Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型。它给 flexbox 的子元素之间提供了强大的空间分布和对齐能力。">
+<meta property="og:description" content="JavaScript（JS）是一种具有函数优先特性的轻量级、解释型或者说即时编译型的编程语言。具体地说，JavaScript 是一种基于原型、多范式、单线程的动态语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/flex.png">
-<meta property="article:published_time" content="2024-02-28T08:26:01.000Z">
-<meta property="article:modified_time" content="2024-02-28T15:41:34.483Z">
+<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/javascript.png">
+<meta property="article:published_time" content="2024-03-03T05:44:42.000Z">
+<meta property="article:modified_time" content="2024-03-03T06:35:01.233Z">
 <meta property="article:author" content="Xu Haoyang">
-<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/flex.png">
+<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/javascript.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CSS Flex布局 - Seasalt-haiyan&#39;s Blog</title>
+  <title>JavaScript基础 - Seasalt-haiyan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSS Flex布局"></span>
+            <span id="subtitle" data-typed-text="JavaScript基础"></span>
           
         </div>
 
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-28 16:26" pubdate>
-          2024年2月28日 下午
+        <time datetime="2024-03-03 13:44" pubdate>
+          2024年3月3日 下午
         </time>
       </span>
     
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          23 分钟
+          17 分钟
         
       </span>
     
@@ -280,12 +280,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSS Flex布局</h1>
+            <h1 id="seo-header">JavaScript基础</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：4 天前
+                    本文最后更新于：3 分钟前
                   
                 
               </p>
@@ -293,176 +293,216 @@
             
               <div class="markdown-body">
                 
-                <h1>flex布局的基本概念</h1>
+                <h1>Javascript简介</h1>
 <ul class="lvl-0">
-<li class="lvl-2">flex布局是一种一维的布局模型，它给子元素之间提供了强大的空间分布和对齐能力。</li>
-<li class="lvl-2">我们之所以说flex是一种一维的布局，是因为一个flex容器一次只能处理一个维度上的元素布局，一行或者一列。</li>
-<li class="lvl-2">采用flex布局的元素，称为<strong>flex容器</strong>，它的所有子元素自动成为容器成员，称为<strong>flex项目</strong>，容器存在两根轴，默认项目按照主轴排列。</li>
+<li class="lvl-2">JavaScript 是一门跨平台、面向对象的脚本语言，它能使网页可交互（例如拥有复杂的动画，可点击的按钮，通俗的菜单等）。另外还有高级的服务端 Javascript 版本，例如 Node.js，它可以让你在网页上添加更多功能，不仅仅是下载文件（例如在多台电脑之间的协同合作）。在宿主环境（例如 web 浏览器）中，JavaScript 能够通过其所连接的环境提供的编程接口进行控制</li>
+<li class="lvl-2">JavaScript是一种动态弱类型语言</li>
+<li class="lvl-2">如今，JavaScript 已经成为了与 HTML/CSS 完全集成的，使用最广泛的浏览器语言</li>
 </ul>
-<h1>flexbox的两根轴线</h1>
-<p>当使用flex布局时，首先应该想到两根轴线——主轴和交叉轴，主轴由<code>flex-direction</code>定义，另一根轴垂直于它，flexbox的所有属性都跟这两根轴线有关。</p>
-<p>首先，先设置flex容器</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.container</span>&#123;<br>    <span class="hljs-attribute">display</span>: flex | inline-flex; //块元素使用<span class="hljs-attribute">flex</span>，行内块元素使用inline-<span class="hljs-attribute">flex</span><br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="容器属性">容器属性</h2>
+<h1>变量</h1>
+<p>我们可以用 var ，let 或 const 声明变量来存储数据</p>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p><code>flex-direction</code></p>
+<p>let - 现代的变量声明方式</p>
 </li>
 <li class="lvl-2">
-<p><code>flex-wrap</code></p>
+<p>var - 老旧的变量声明方式，一般情况下，我们不会再使用它。</p>
 </li>
 <li class="lvl-2">
-<p><code>flex-flow</code></p>
-</li>
-<li class="lvl-2">
-<p><code>justify-content</code></p>
-</li>
-<li class="lvl-2">
-<p><code>align-items</code></p>
-</li>
-<li class="lvl-2">
-<p><code>align-content</code></p>
+<p>const - 类似于let，但是变量的值无法被修改</p>
 </li>
 </ul>
-<h2 id="主轴">主轴</h2>
-<p>主轴由<code>flex-direction</code>定义，可以取四个值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a=<span class="hljs-number">10</span>;<br><span class="hljs-keyword">var</span> a;<br><span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
+<h1>JavaScript标识符</h1>
+<p>所有JavaScript变量必须以<strong>唯一</strong>的名称为标识</p>
+<p>这些唯一的名称称为<strong>标识符</strong></p>
+<p>构造变量名称的通用规则是：</p>
+<ol>
+<li class="lvl-3">
+<p>名称可以包含字母，数字，下划线，和美元符号$</p>
+</li>
+<li class="lvl-3">
+<p>名称也可以以字母，$ 和 _ 开头</p>
+</li>
+<li class="lvl-3">
+<p>名称对大小写敏感（y和Y是两个变量）</p>
+</li>
+<li class="lvl-3">
+<p>保留字无法用做变量名称</p>
+</li>
+</ol>
+<h1>数据类型</h1>
+<p>JavaScript 有八种基本的数据类型（七种基本数据类型和一个复杂数据类型）</p>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p><code>row</code></p>
+<p>Number</p>
+<ul class="lvl-2">
+<li class="lvl-6">用于任何类型的数字：整数或浮点数，范围在±（253-1）范围内的整数</li>
+</ul>
 </li>
 <li class="lvl-2">
-<p><code>row-reverse</code></p>
+<p>BigInt</p>
+<ul class="lvl-2">
+<li class="lvl-4">用于任意长度的整数</li>
+</ul>
 </li>
 <li class="lvl-2">
-<p><code>column</code></p>
+<p>String</p>
+<ul class="lvl-2">
+<li class="lvl-4">用于字符串，一个字符串可以包含0个或多个字符类型</li>
+</ul>
 </li>
 <li class="lvl-2">
-<p><code>column-reverse</code></p>
+<p>Boolean</p>
+<ul class="lvl-2">
+<li class="lvl-4">用于true 和 false</li>
+<li class="lvl-4">true不一定等于1，false不一定等于0</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Null</p>
+<ul class="lvl-2">
+<li class="lvl-4">表示未知值，只有一个null值的独立类型</li>
+<li class="lvl-4">null表示空对象指针</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Undefined</p>
+<ul class="lvl-2">
+<li class="lvl-4">用于还没有定义的值——只有一个undefined值的独立类型</li>
+<li class="lvl-4">在使用var声明变量但是没有初始化时，这个变量就是undefined</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Symbol</p>
+<ul class="lvl-2">
+<li class="lvl-4">用于唯一的标识符</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>Object</p>
+<ul class="lvl-2">
+<li class="lvl-4">用于更复杂的数据结构，比如function、array、date</li>
+</ul>
 </li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-direction</span>: row | row-reverse | column | column-reverse;<br></code></pre></td></tr></table></figure>
+<p><strong>我们可以使用typeof运算符查看数据类型</strong></p>
+<p><code>typeof x</code>或者<code>typeof(x)</code></p>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>row和row-reverse分别是水平排列和水平逆序排列</p>
+<p>会返回字符串类型，例如“string”<br>
+<code>typeof null</code>会返回“object”——这是js的错误，实际上它不是object</p>
 </li>
 </ul>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/1.svg" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
+<h1>值的比较</h1>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>column 和 column-reverse 分别是垂直排列和垂直逆序排列</p>
+<p>运算符</p>
 </li>
 </ul>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/2.svg" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<h2 id="交叉轴">交叉轴</h2>
-<p>交叉轴垂直于主轴，所以如果你的<code>flex-direction</code>设置成了<code>row</code>或者<code>row-reverse</code>的话，交叉轴的方向就是沿着上下方向延伸的。</p>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/3.svg" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<p>如果主轴方向设成了<code>column</code>或者<code>column-reverse</code>交叉轴就是水平方向</p>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/4.svg" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<h1>用 flex-wrap 实现多行 Flex 容器</h1>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">flex-wrap</span>: no-wrap | wrap | wrap-reverse;<br></code></pre></td></tr></table></figure>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><code>nowrap</code> （默认）不换行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">==</td>
+<td style="text-align:center">比较两个操作数的值是否相等</td>
+</tr>
+<tr>
+<td style="text-align:center">!=</td>
+<td style="text-align:center">比较两个操作数的值是否不相等</td>
+</tr>
+<tr>
+<td style="text-align:center">===</td>
+<td style="text-align:center">比较两个操作数的值是否相等，同时检查类型是否相同</td>
+</tr>
+<tr>
+<td style="text-align:center">!==</td>
+<td style="text-align:center">比较两个操作数的值是否不相等，同时检查类型是否不相同</td>
+</tr>
+</tbody>
+</table>
+<p><strong>能不用<mark>就不用</mark>，尽量使用===来确保不会出现不可预料的错误</strong></p>
+<h1>类型转换</h1>
+<ol>
+<li class="lvl-3">
+<p>显式类型转换</p>
+<ol>
+<li class="lvl-6">将其他数据类型转换成String类型
+<ul class="lvl-4">
+<li class="lvl-10">
+<p>toString()</p>
+<p>该方法不会影响原来变量，它会将转换的结构返回。注意<strong>Null和Undefined没有toString方法</strong>，如果调用会报错</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;<br>a = a.<span class="hljs-title function_">toString</span>();<br></code></pre></td></tr></table></figure>
+<ul class="lvl-6">
+<li class="lvl-14">
+<p>String()<br>
+将被转换的数据作为参数传递给函数。使用String函数做类型强制转换时，对于Number和Boolean就是调用toString()方法，对于null和undefined，就不会调用toString()方法，它会将null直接转换成”null”，将undefined转换成”undefined”。</p>
 </li>
 </ul>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/5.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><code>wrap</code> 换行，第一行在上方</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;<br>a = <span class="hljs-title class_">String</span>(a);<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/6.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><code>wrap-reverse</code> 换行，第一行在下方</p>
+</li>
+<li class="lvl-7">将其他的数据类型转换为Number类型
+<ul class="lvl-4">
+<li class="lvl-10">Number()
+<ol>
+<li class="lvl-15">如果是纯数字的字符串，则直接将其转换为数字。</li>
+<li class="lvl-15">如果字符串中有非自数字的内容，则转换为NaN。</li>
+<li class="lvl-15">布尔类型转换成数字，true转成1，false转成0。</li>
+<li class="lvl-15">Null转成数字0。</li>
+<li class="lvl-15">Undefined转成数字NaN。</li>
+</ol>
+</li>
+<li class="lvl-10">parseInt(),parseFloat()
+<ol>
+<li class="lvl-15">parseInt()把一个字符串转换为一个整数，只取整数部分</li>
+<li class="lvl-15">parseFloat()把一个字符串转换为一个浮点数，可获得有效消暑；</li>
+<li class="lvl-15">对非String使用parseInt()或parseFloat()，它会将其转换为String。</li>
+</ol>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;123abc&#x27;</span>,<br><span class="hljs-keyword">var</span> b = <span class="hljs-string">&#x27;12.34.56ab&#x27;</span>;<br>a = <span class="hljs-built_in">parseInt</span>(a);<span class="hljs-comment">//a:123</span><br>b = <span class="hljs-built_in">parseFloat</span>(b);<span class="hljs-comment">//b:12.34</span><br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/7.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<h1>简写属性 flex-flow</h1>
-<p>你可以将两个属性 <code>flex-direction</code> 和 <code>flex-wrap</code> 组合为简写属性 <code>flex-flow</code>。第一个指定的值为 <code>flex-direction</code> ，第二个指定的值为 <code>flex-wrap</code>.</p>
-<h1>元素间的对齐和空间分配</h1>
-<p>Flexbox 的一个关键特性是能够设置 flex 元素沿主轴方向和交叉轴方向的对齐方式，以及它们之间的空间分配。</p>
-<h2 id="align-items">align-items</h2>
-<p><code>align-items</code>属性可以使元素在交叉轴方向对齐</p>
-<p>这个属性的初始值为<code>stretch</code>，这就是为什么 flex 元素会默认被拉伸到最高元素的高度。实际上，它们被拉伸来填满 flex 容器——最高的元素定义了容器的高度。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">align-items</span>:flex-start | flex-end | center | baseline | stretch;<br>//Streth 拉伸（子元素不设置高度时的默认值)<br></code></pre></td></tr></table></figure>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/9.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<h2 id="justify-content">justify-content</h2>
-<p><code>justify-content</code>属性用来使元素在主轴方向上对齐，主轴方向是通过 <code>flex-direction</code> 设置的方向。</p>
-<p>你可以把值设置为<code>space-between</code>，把元素排列好之后的剩余空间拿出来，平均分配到元素之间，所以元素之间间隔相等。或者使用<code>space-around</code>，使每个元素的左右空间相等。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around;<br></code></pre></td></tr></table></figure>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/8.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<h1>flex元素上的属性</h1>
-<p>为了更好地控制flex元素，有四个属性可以作用于他们：</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><code>order</code></p>
 </li>
-<li class="lvl-2">
-<p><code>flex-grow</code></p>
-</li>
-<li class="lvl-2">
-<p><code>flex-shrink</code></p>
-</li>
-<li class="lvl-2">
-<p><code>flex-basis</code></p>
-</li>
+<li class="lvl-7">将其他的数据类型转换为Boolean类型
+<ul class="lvl-4">
+<li class="lvl-10">Boolean()<br>
+1. 对于数字，0和NaN是false，其余的都是true。<br>
+2. 对于字符串，空串是false，其余的都是true。<br>
+3. 对于null和undefined，都是false。<br>
+4. 对于对象，都是true。</li>
 </ul>
-<p>在考虑这几个属性的作用之前，需要先了解一下<strong>可用空间</strong>这个概念，这几个flex属性其实就是改变了flex容器中的可用空间的行为，同时，可用空间对于flex元素的对齐行为也是很重要的。</p>
-<p>假设在 1 个 500px 的容器中，我们有 3 个 100px 宽的元素，那么这 3 个元素需要占 300px 的宽，剩下 200px 的可用空间。在默认情况下，flexbox 的行为会把这 200px 的空间留在最后一个元素的后面。</p>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/10.svg" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<p>如果期望这些元素能自动地扩展去填充满剩下的空间，那么我们需要去控制可用空间在这几个元素间如何分配，这就是元素上的那些 flex 属性要做的事。</p>
-<h2 id="order属性">order属性</h2>
-<p><code>order</code>属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
-<img src="/2024/02/28/CSS-flex%E5%B8%83%E5%B1%80/11.png" srcset="/img/loading.gif" lazyload class="" title="这是图片的说明">
-<h2 id="Flex-元素属性：flex-grow">Flex 元素属性：flex-grow</h2>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><code>flex-grow</code>属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
 </li>
-<li class="lvl-2">
-<p>如果容器压根就没有剩余空间，那么即使设置了<code>flex-grow</code>也不会生效。</p>
+</ol>
 </li>
-<li class="lvl-2">
-<p><code>flex-grow</code>的默认值是0，子项目不做任何比例拉伸，如果将三个子项目的flex-grow属性都设为1，那么他们将按照1:1:1的比例分配剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
-</li>
+<li class="lvl-3">
+<p>隐式类型转换</p>
+<ol>
+<li class="lvl-6">转换为String类型
+<ul class="lvl-4">
+<li class="lvl-10">为任意的数据加一个空串</li>
 </ul>
-<h2 id="Flex-元素属性：flex-shrink">Flex 元素属性：flex-shrink</h2>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;<br>a = a + <span class="hljs-string">&#x27; &#x27;</span> <span class="hljs-comment">//a: &quot;123&quot;</span><br></code></pre></td></tr></table></figure>
 </li>
-<li class="lvl-2">
-<p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
-</li>
-<li class="lvl-2">
-<p>负值对该属性无效，如果容器还有剩余空间，同样设置<code>flex-shrink</code>也是无效的。</p>
-</li>
-<li class="lvl-2">
-<p>如果不希望压缩，我们可以选择换行，只需要设置<code>flex-wrap</code>为<code>wrap</code>就好。</p>
-</li>
+<li class="lvl-7">转换为Number类型
+<ul class="lvl-4">
+<li class="lvl-10">在数据前面加一个+</li>
 </ul>
-<h2 id="Flex-元素属性：-flex-basis">Flex 元素属性： flex-basis</h2>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p><code>flex-basis</code> 定义了该元素的空间大小，flex 容器里除了元素所占的空间以外的富余空间就是可用空间。该属性的默认值是 <code>auto</code>。此时，浏览器会检测这个元素是否具有确定的尺寸。在上面的例子中，所有元素都设定了宽度（width）为 100px，所以 <code>flex-basis</code> 的值为 100px。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;123&#x27;</span><br>a = +a <span class="hljs-comment">//a:123</span><br></code></pre></td></tr></table></figure>
 </li>
-<li class="lvl-2">
-<p>如果没有给元素设定尺寸，<code>flex-basis</code> 的值采用元素内容的尺寸。这就解释了：我们给只要给 Flex 元素的父元素声明 <code>display: flex</code>，所有子元素就会排成一行，且自动分配小大以充分展示元素的内容。</p>
-</li>
+<li class="lvl-7">转换为Boolean类型
+<ul class="lvl-4">
+<li class="lvl-9">为任意的数据取两次反</li>
 </ul>
-<h2 id="Flex属性的简写">Flex属性的简写</h2>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>flex属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span><br>a = !!a <span class="hljs-comment">//a:true</span><br></code></pre></td></tr></table></figure></li>
+</ol>
 </li>
-<li class="lvl-2">
-<p>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>)。</p>
-</li>
-<li class="lvl-2">
-<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
-</li>
-</ul>
+</ol>
 
                 
               </div>
@@ -496,7 +536,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/CSS/" class="print-no-link">#CSS</a>
+        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
       
     </div>
   
@@ -508,8 +548,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSS Flex布局</div>
-      <div>https://blog.seasalt-haiyan.top/2024/02/28/CSS-flex布局/</div>
+      <div>JavaScript基础</div>
+      <div>https://blog.seasalt-haiyan.top/2024/03/03/JavaScript基础/</div>
     </div>
     <div class="license-meta">
       
@@ -521,13 +561,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月28日</div>
+          <div>2024年3月3日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年2月28日</div>
+          <div>2024年3月3日</div>
         </div>
       
       
@@ -564,18 +604,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/02/29/CSS-%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80/" title="CSS 浮动布局">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">CSS 浮动布局</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/11/22/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E2%80%94%E2%80%94%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" title="排序算法——冒泡排序">
-                        <span class="hidden-mobile">排序算法——冒泡排序</span>
+                      <a href="/2024/03/02/CSS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="CSS基础知识">
+                        <span class="hidden-mobile">CSS基础知识</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
