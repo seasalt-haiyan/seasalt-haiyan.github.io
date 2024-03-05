@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.seasalt-haiyan.top/image/javascript.png">
 <meta property="article:published_time" content="2024-03-04T09:18:40.000Z">
-<meta property="article:modified_time" content="2024-03-04T10:24:36.666Z">
+<meta property="article:modified_time" content="2024-03-05T10:46:17.592Z">
 <meta property="article:author" content="Xu Haoyang">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          4.8k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          38 分钟
+          41 分钟
         
       </span>
     
@@ -285,7 +285,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -345,6 +345,25 @@
 <p>任何值都可以作为参数，<strong>注意：函数不会检查类型</strong></p>
 </li>
 </ul>
+<h2 id="函数重载">函数重载</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>函数通过参数的个数和类型不同来创建不同的函数签名，通过调用函数时传入的参数个数和参数类型来进行命名参数的验证。</p>
+</li>
+<li class="lvl-2">
+<p>但是，在js后声明的同名函数会对前面声明的一个函数进行一个覆盖，所以JavaScript没有真正意义上的函数重载</p>
+</li>
+</ul>
+<h2 id="类数组arguments对象">类数组arguments对象</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果一个函数传递了三个参数，你可以以如下方式引用他们</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">arguments</span>[<span class="hljs-number">0</span>]<br><span class="hljs-variable language_">arguments</span>[<span class="hljs-number">1</span>]<br><span class="hljs-variable language_">arguments</span>[<span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
+<h2 id="回调函数">回调函数</h2>
+<pre><code class="hljs">回调函数是一个函数，将会在另一个函数完成执行后立即执行。回调函数是一个作为参数传给另一个 JavaScript 函数的函数。这个回调函数会在传给的函数内部执行。
+</code></pre>
 <h1>函数提升</h1>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a)<span class="hljs-comment">//Undefined</span><br><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
 <h2 id="变量的提升">变量的提升</h2>
@@ -541,7 +560,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月4日</div>
+          <div>2024年3月5日</div>
         </div>
       
       
