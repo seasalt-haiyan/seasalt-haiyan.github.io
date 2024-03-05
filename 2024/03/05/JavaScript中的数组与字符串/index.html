@@ -16,15 +16,20 @@
   <meta name="author" content="Xu Haoyang">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="数组——一种将一组数据存储在单个变量名下的优雅方式。字符串赋予我们多样的文本。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript中的数组与字符串">
 <meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/03/05/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="Seasalt-haiyan&#39;s Blog">
+<meta property="og:description" content="数组——一种将一组数据存储在单个变量名下的优雅方式。字符串赋予我们多样的文本。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/javascript.png">
 <meta property="article:published_time" content="2024-03-05T10:40:38.000Z">
-<meta property="article:modified_time" content="2024-03-05T10:40:38.373Z">
+<meta property="article:modified_time" content="2024-03-05T11:22:44.564Z">
 <meta property="article:author" content="Xu Haoyang">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/javascript.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -219,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          2.9k 字
         
       </span>
     
@@ -230,7 +235,7 @@
         
         
         
-          1 分钟
+          25 分钟
         
       </span>
     
@@ -280,7 +285,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：6 分钟前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -288,7 +293,118 @@
             
               <div class="markdown-body">
                 
-                
+                <h1>字符串</h1>
+<p>字符串是一种基本数据类型</p>
+<h2 id="获取字符串长度的length属性">获取字符串长度的length属性</h2>
+<p>使用字符串的length属性可以查看当前字符串中字符的数量，双字符也会按照单字符来计算</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">str.<span class="hljs-property">length</span><br></code></pre></td></tr></table></figure>
+<h2 id="字符串拼接-concat方法">字符串拼接 concat方法</h2>
+<p>concat方法用于连接（合并/拼接）字符串，使用方法为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;Hello&quot;</span>;<br><span class="hljs-keyword">let</span> str2 = str.<span class="hljs-title function_">concat</span>(<span class="hljs-string">&quot;world&quot;</span>,<span class="hljs-string">&quot;qwq&quot;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str2);<br></code></pre></td></tr></table></figure>
+<p>字符串也可以使用加号运算符来拼接（常用）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;hello&quot;</span>+<span class="hljs-string">&quot;world&quot;</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str);<br></code></pre></td></tr></table></figure>
+<h2 id="字符串切片方法-slice">字符串切片方法 slice</h2>
+<p>切片方法，顾名思义，就是将字符串切成某一段的一片</p>
+<p>它接受两个参数，第一个参数是开始的位置（必需），第二个参数是结束的位置</p>
+<p>当传入负数时，按照从末尾开始算，-1表示倒数第一位</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;一二三四五六七八&quot;</span>;<br><span class="hljs-keyword">let</span> strSplice = str.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">6</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(strSplice);<span class="hljs-comment">//一二三四五六</span><br></code></pre></td></tr></table></figure>
+<h2 id="删除左右空格的trim方法">删除左右空格的trim方法</h2>
+<p><code>trim</code>方法会返回一个新字符串，删除了左右的所有空格<br>
+<strong>实际开发中会用到这个方法进行用户输入数据的处理</strong></p>
+<h2 id="将字符串打碎成数组的split方法">将字符串打碎成数组的split方法</h2>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> str = <span class="hljs-string">&quot;一二三四五六七八&quot;</span>;<br><span class="hljs-keyword">let</span> engStr = <span class="hljs-string">&quot;hello world you qwq&quot;</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot;&quot;</span>));<span class="hljs-comment">//&#x27;一&#x27;, &#x27;二&#x27;, &#x27;三&#x27;, &#x27;四&#x27;, &#x27;五&#x27;, &#x27;六&#x27;, &#x27;七&#x27;, &#x27;八&#x27;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(engStr.<span class="hljs-title function_">split</span>(<span class="hljs-string">&quot; &quot;</span>));<span class="hljs-comment">//&#x27;hello&#x27;, &#x27;world&#x27;, &#x27;you&#x27;, &#x27;qwq&#x27;</span><br></code></pre></td></tr></table></figure>
+<h2 id="字符串的大小写转换方法-toLowCase-toUpperCase">字符串的大小写转换方法 toLowCase toUpperCase</h2>
+<p>返回一个新字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> sentence = <span class="hljs-string">&#x27;The quick brown fox jumps over the lazy dog.&#x27;</span>;<br><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sentence.<span class="hljs-title function_">toUpperCase</span>());<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(sentence.<span class="hljs-title function_">toLowCase</span>());<br></code></pre></td></tr></table></figure>
+<h1>数组</h1>
+<p>数组是一种复合数据类型，在数组中可以存储多个不同类型的数据</p>
+<p>数据中存储的是有序的数据，对象存储的是无序的数据，数组中每个数都有一个唯一的索引</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>索引是一组大于等于0的整数</p>
+</li>
+<li class="lvl-2">
+<p>创建数组</p>
+<ul class="lvl-2">
+<li class="lvl-4">可以通过Array()，也可以通过数组字面量来创建数组</li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>向数组中添加元素</p>
+<ul class="lvl-2">
+<li class="lvl-4"><code>数组[索引] = 元素</code></li>
+</ul>
+</li>
+<li class="lvl-2">
+<p>length属性</p>
+<ul class="lvl-2">
+<li class="lvl-4">获取数组中元素的数量，实际值为数组索引+1，length值可以修改，可以使用length向数组末尾添加元素</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>;<br><br><span class="hljs-keyword">const</span> arr2 = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>]<span class="hljs-comment">//数组字面量</span><br><br>arr[<span class="hljs-number">0</span>] = <span class="hljs-number">22</span>;<br><br><span class="hljs-title function_">typeof</span>(arr)<span class="hljs-comment">//object</span><br><br>arr2.<span class="hljs-property">length</span> <span class="hljs-comment">//5</span><br><br>arr[arr.<span class="hljs-property">length</span>] = <span class="hljs-number">5</span> <span class="hljs-comment">//末尾添加</span><br></code></pre></td></tr></table></figure>
+<h2 id="数组的迭代">数组的迭代</h2>
+<p>JS中的数组有自己的迭代方式，不需要我们手动使用for循环遍历</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>forEach方法：</p>
+</li>
+</ul>
+<p><code>forEach()</code>方法没有返回值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];<br>arr.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(item);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>map方法</p>
+</li>
+</ul>
+<p><code>map</code>方法是带有返回值的方法，并且<code>map</code>方法比<code>forEach()</code>要快，他会返回一个新的数组</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>];<br><span class="hljs-keyword">let</span> arrNew = arr.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">return</span> item + <span class="hljs-number">1</span>;<br>&#125;);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arr);<span class="hljs-comment">//1，2，3，4，5，6</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(arrNew);<span class="hljs-comment">//2，3，4，5，6，7</span><br></code></pre></td></tr></table></figure>
+<h2 id="数组中查找某个元素的位置indexOf">数组中查找某个元素的位置indexOf</h2>
+<p><code>indexOf(item，start)</code>方法可以返回数组中某个指定的元素位置。该方法将从头到尾地检索数组，看它是否含有对应的元素，开始检索的位置在数组 start 处或数组的开头（没有指定 start 参数时）。如果找到一个 item，则返回 item 的第一次出现的位置。如果在数组中没找到指定元素则返回 -1。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> fruits = [<span class="hljs-string">&quot;Banana&quot;</span>, <span class="hljs-string">&quot;Orange&quot;</span>, <span class="hljs-string">&quot;Apple&quot;</span>, <span class="hljs-string">&quot;Mango&quot;</span>];<br><span class="hljs-keyword">let</span> index = fruits.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&quot;Apple&quot;</span>);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(index);<br><br></code></pre></td></tr></table></figure>
+<h2 id="数组的过滤方法filter">数组的过滤方法filter</h2>
+<p><code>fliter</code>方法用于对数组进行过滤，他会<strong>创建一个新数组</strong>，新数组中的元素是通过检查数组中符合条件的所有元素。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]<br><span class="hljs-keyword">var</span> result = arr.<span class="hljs-title function_">filter</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">number</span>) &#123;<br>    <span class="hljs-keyword">return</span> number &gt; <span class="hljs-number">3</span><br>&#125;)<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result);<br></code></pre></td></tr></table></figure>
+<h2 id="数组转换成字符串方法join">数组转换成字符串方法join</h2>
+<p><code>join()</code>可以将一个数组中的元素连接成一个字符串，参数是我们指定的一个字符作为连接符</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [<span class="hljs-string">&quot;aa&quot;</span>,<span class="hljs-string">&quot;bb&quot;</span>]<br><span class="hljs-keyword">let</span> result = arr.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;&quot;</span>)<span class="hljs-comment">//aabb</span><br><span class="hljs-keyword">let</span> result = arr.<span class="hljs-title function_">join</span>(<span class="hljs-string">&quot;@&quot;</span>)<span class="hljs-comment">//aa@bb</span><br></code></pre></td></tr></table></figure>
+<h2 id="截取数组方法slice">截取数组方法slice()</h2>
+<p>参数：截取的起始位置(包括)，截取的结束位置(不包括)</p>
+<p>第二个参数可以省略，如果省略则一直截到最后</p>
+<p>索引可以写负值</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>如果两个参数全部省略，则可以对数组进行浅拷贝</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js">arr = [<span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-string">&quot;Andy&quot;</span>, <span class="hljs-string">&quot;John&quot;</span>]<br><br>result = arr.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>,<span class="hljs-number">2</span>)<span class="hljs-comment">//&quot;Tom&quot;,&quot;Andy&quot;</span><br></code></pre></td></tr></table></figure>
+<h1>浅拷贝和深拷贝</h1>
+<h2 id="浅拷贝">浅拷贝</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>通常对对象的拷贝都是浅拷贝</p>
+</li>
+<li class="lvl-2">
+<p>浅拷贝顾名思义，只对对象的浅层进行拷贝</p>
+</li>
+<li class="lvl-2">
+<p>如果对象中存储的数据是原始值，那么拷贝的深浅不重要</p>
+</li>
+<li class="lvl-2">
+<p>浅拷贝只会对对象本身进行复制，不会复制对象中的属性，或元素</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr = [&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;Tom&quot;</span>&#125;,&#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&quot;bob&quot;</span>&#125;]<br><span class="hljs-keyword">const</span> arr2 = arr.<span class="hljs-title function_">slice</span>()<span class="hljs-comment">//浅拷贝</span><br></code></pre></td></tr></table></figure>
+<h2 id="深拷贝">深拷贝</h2>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>不仅复制对象本身，还复制对象中的属性和元素</p>
+</li>
+<li class="lvl-2">
+<p>通常情况下不使用深拷贝</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> arr3 = <span class="hljs-title function_">structuredClone</span>(arr)<span class="hljs-comment">//深拷贝</span><br><br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -296,6 +412,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/" class="category-chain-item">前端学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+      
+    </div>
   
 </div>
 
