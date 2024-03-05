@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>CSS 盒子模型</title>
+    <link href="/2024/03/05/CSS-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/"/>
+    <url>/2024/03/05/CSS-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/</url>
+    
+    <content type="html"><![CDATA[<h1>盒子模型组成</h1><ul class="lvl-0"><li class="lvl-2">border 边框</li><li class="lvl-2">content 内容</li><li class="lvl-2">padding 内边距</li><li class="lvl-2">margin 外边距</li></ul><img src="/2024/03/05/CSS-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/1.png" class="" title="这是图片的说明"><h1>边框 border</h1><p>border可以设置元素的边框。边框由三部分组成：边框宽度（粗细）边框样式 边框颜色</p><p>语法：<br><code>border : border-width || border-style || border-color</code></p><table><thead><tr><th style="text-align:center">属性</th><th style="text-align:center">作用</th></tr></thead><tbody><tr><td style="text-align:center">border-width</td><td style="text-align:center">定义边框粗细，单位是px</td></tr><tr><td style="text-align:center">border-style</td><td style="text-align:center">边框的样式</td></tr><tr><td style="text-align:center">border-color</td><td style="text-align:center">边框颜色</td></tr></tbody></table><p>边框简写</p><p><code>border: 1px solid red;</code></p><p><strong>边框会影响盒子的实际大小</strong></p><h1>内边距 padding</h1><p>内边距即边框和内容之间的距离</p><p><code>padding : 10px</code></p><p><strong>padding会影响盒子实际大小</strong></p><p>如果盒子已经有了宽度和高度，此时再指定内边框，会撑大盒子</p><p>如果保证盒子和效果图大小一致，则让width/height减去多出来的内边距大小即可</p><h1>外边距 margin</h1><p>margin控制盒子与盒子之间的距离</p><p><code>margin: 10px</code></p><p>典型应用：块级盒子水平居中</p><ul class="lvl-0"><li class="lvl-2"><p>盒子必须有宽度</p></li><li class="lvl-2"><p>盒子左右的外边距都为auto</p></li><li class="lvl-2"><p><code>margin: 0 auto,</code>即可实现</p></li></ul><p>使用margin定义块元素的垂直外边距时，可能会出现外边距的合并。</p><p>当上下相邻的两个块元素(兄弟关系)相遇时，如果上面的元素有下外边距 margin-bottom ，下面的元素有上外边距 margin-top 则他们的垂直边距不是两个margin之和，而是两个值中的较大者，这种现象称为相邻块元素垂直外边距的合并。</p><p>解决办法：尽量只给一个盒子添加margin</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CSS</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JavaScript中的数组与字符串</title>
     <link href="/2024/03/05/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     <url>/2024/03/05/JavaScript%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
