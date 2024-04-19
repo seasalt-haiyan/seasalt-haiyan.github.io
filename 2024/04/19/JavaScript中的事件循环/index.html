@@ -16,26 +16,26 @@
   <meta name="author" content="Xu Haoyang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="闭包（closure）是一个函数以及其捆绑的周边环境状态（lexical environment，词法环境）的引用的组合。换而言之，闭包让开发者可以从内部函数访问外部函数的作用域。在 JavaScript 中，闭包会随着函数的创建而被同时创建。">
+    <meta name="description" content="JavaScript 是一门单线程的语言，意味着同一时间内只能做一件事，但是这并不意味着单线程就是阻塞，而实现单线程非阻塞的方法就是事件循环">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS中的闭包">
-<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/04/18/JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/index.html">
+<meta property="og:title" content="JavaScript中的事件循环">
+<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/04/19/JavaScript%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/index.html">
 <meta property="og:site_name" content="Seasalt-haiyan&#39;s Blog">
-<meta property="og:description" content="闭包（closure）是一个函数以及其捆绑的周边环境状态（lexical environment，词法环境）的引用的组合。换而言之，闭包让开发者可以从内部函数访问外部函数的作用域。在 JavaScript 中，闭包会随着函数的创建而被同时创建。">
+<meta property="og:description" content="JavaScript 是一门单线程的语言，意味着同一时间内只能做一件事，但是这并不意味着单线程就是阻塞，而实现单线程非阻塞的方法就是事件循环">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/closure.png">
-<meta property="article:published_time" content="2024-04-18T13:30:56.000Z">
-<meta property="article:modified_time" content="2024-04-19T08:21:41.549Z">
+<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/eventloop.jpg">
+<meta property="article:published_time" content="2024-04-19T08:36:23.000Z">
+<meta property="article:modified_time" content="2024-04-19T09:36:44.969Z">
 <meta property="article:author" content="Xu Haoyang">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/closure.png">
+<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/eventloop.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>JS中的闭包 - Seasalt-haiyan&#39;s Blog</title>
+  <title>JavaScript中的事件循环 - Seasalt-haiyan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JS中的闭包"></span>
+            <span id="subtitle" data-typed-text="JavaScript中的事件循环"></span>
           
         </div>
 
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-18 21:30" pubdate>
-          2024年4月18日 晚上
+        <time datetime="2024-04-19 16:36" pubdate>
+          2024年4月19日 下午
         </time>
       </span>
     
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.3k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          9 分钟
+          12 分钟
         
       </span>
     
@@ -280,12 +280,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JS中的闭包</h1>
+            <h1 id="seo-header">JavaScript中的事件循环</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 小时前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -293,40 +293,106 @@
             
               <div class="markdown-body">
                 
-                <h2 id="闭包是什么？">闭包是什么？</h2>
-<p>一个函数和对其周围状态(lexical environment, 词法环境)的引用捆绑在一起(或者说函数被引用包围)，这样的组合就是闭包。</p>
-<p>也就是说，闭包让你可以在一个内层函数中访问到其外层函数的作用域</p>
-<p>在JS中，每创建一个函数，闭包就会在函数创建的同时创建出来，作为函数内部与外部连接起来的一座桥梁</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;Mozilla&quot;</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">displayName</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-title function_">alert</span>(name);<br>    &#125;<br>    <span class="hljs-title function_">displayName</span>();<br>&#125;<br><span class="hljs-title function_">init</span>();<br></code></pre></td></tr></table></figure>
-<p><code>displayName()</code>函数没有自己的局部变量。然后，由于闭包的特性，他可以访问到外部函数的变量</p>
-<p>《你不知道的JavaScript》: 当函数可以记住并访问所在的词法作用域时，就产生了闭包</p>
-<p><strong>词法作用域</strong>：指的是定义表达式并能被访问的区间，也就是一个声明（定义变量、函数等）的词法作用域就是它被<strong>定义</strong>时所在的作用域</p>
-<h2 id="闭包的经典使用场景">闭包的经典使用场景</h2>
+                <h2 id="线程与进程">线程与进程</h2>
+<ul class="lvl-0">
+<li class="lvl-2">进程（process）</li>
+</ul>
+<p>保存在硬盘中的程序会被载入到内存中运行，在内存空间里面形成一个独立的内存体，这个内存体由自己独立的地址空间、系统也会为应用的每一个进程分配独立的CPU、内存等资源</p>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>return 回一个函数</p>
-</li>
-<li class="lvl-2">
-<p>函数作为一个参数</p>
-</li>
-<li class="lvl-2">
-<p>循环赋值</p>
+<p>线程（thread）</p>
 </li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>  data[i]();<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">5</span>;j++)&#123;<br>  data[j]()<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; i = <span class="hljs-number">9</span>; j &lt; <span class="hljs-number">5</span>; j++)&#123;<br>  data[j]();<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br></code></pre></td></tr></table></figure>
+<p>进程中执行的每一个任务指的就是线程，系统不会为其分配内存资源，各个线程共享进程拥有的内存资源</p>
+<p><strong>进程是CPU资源分配的最小单位</strong></p>
+<p><strong>线程是CPU调度的最小单位</strong></p>
+<h2 id="事件循环是什么">事件循环是什么</h2>
+<p>JavaScript 是一门单线程的语言，意味着同一时间内只能做一件事，但是这并不意味着单线程就是阻塞，而实现单线程非阻塞的方法就是事件循环</p>
+<p>在JS中，所有的任务都可以分为</p>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>防抖、节流</p>
+<p>同步任务：立即执行的任务，同步任务一般会直接进入到主线程中进行</p>
+</li>
+<li class="lvl-2">
+<p>异步任务：异步执行的任务，比如ajax请求，定时器等</p>
 </li>
 </ul>
-<h2 id="闭包的危害">闭包的危害</h2>
+<p>同步任务和异步任务的运行流程图如下：<br>
+<img src="https://static.vue-js.com/61efbc20-7cb8-11eb-85f6-6fac77c0c9b3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>同步任务进入主线程，即主执行栈，异步任务进入任务队列，主线程内任务执行完毕后，去任务队列读取对应的任务并且推入主线程执行，上述过程的重复就是事件循环</p>
+<ol>
+<li class="lvl-3">
+<p>首先判断js代码是同步还是异步,同步就进入主线程，异步就进入event table</p>
+</li>
+<li class="lvl-3">
+<p>异步任务在event table中注册函数，当满足触发条件后，被推入event queue</p>
+</li>
+<li class="lvl-3">
+<p>同步任务进入主线程后一直执行，直到主线程空闲时，才回去event quene中查看是否有可执行的异步任务，如果有就推入主线程中</p>
+</li>
+</ol>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>容易造成内存泄漏</p>
+<p>event table(回调函数对应表)：用来存储JS中的异步事件(request, setTimeout,IO等)及其对应的回调函数列表</p>
 </li>
 </ul>
-<p>内层函数调用的外部变量无法得到释放，会产生内存泄漏</p>
-<p>如果不是某些特定任务需要使用闭包，在其他函数中创建函数是不明智的，因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响</p>
+<h2 id="宏任务和微任务">宏任务和微任务</h2>
+<p>为什么引入微任务？</p>
+<p>异步任务也有优先级之分，例如DOM操作如果等待过久给用户的体验不好</p>
+<p>所以JS的执行机制是：</p>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>执行一个宏任务，如果遇到微任务就把它放到微任务的事件队列中</p>
+</li>
+<li class="lvl-2">
+<p>当前宏任务执行完成后，会查看微任务的事件队列，然后将里面的所有微任务依次执行完<br>
+<img src="https://static.vue-js.com/6e80e5e0-7cb8-11eb-85f6-6fac77c0c9b3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ul>
+<h3 id="常见的宏任务">常见的宏任务</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>script</p>
+</li>
+<li class="lvl-2">
+<p>setTimeout</p>
+</li>
+<li class="lvl-2">
+<p>setInterval</p>
+</li>
+<li class="lvl-2">
+<p>UI rendering</p>
+</li>
+<li class="lvl-2">
+<p>I/O (node.js)</p>
+</li>
+<li class="lvl-2">
+<p>setImmediate (node.js)</p>
+</li>
+</ul>
+<h3 id="常见的微任务">常见的微任务</h3>
+<ul class="lvl-0">
+<li class="lvl-2">
+<p>Promise.then</p>
+</li>
+<li class="lvl-2">
+<p>MutaionObserver</p>
+</li>
+<li class="lvl-2">
+<p>process.nextTick(node.js)</p>
+</li>
+</ul>
+<h2 id="async-和-await">async 和 await</h2>
+<p><code>async</code>是异步的意思，<code>await</code>则可以理解为 <code>async await</code>。所以可以理解为<code>async</code>就是用来声明一个异步方法，而<code>await</code>是用来等待异步方法执行</p>
+<h3 id="async">async</h3>
+<p><code>async</code>函数返回一个<code>promise</code>对象，下面两种方法是等效的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">f</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&#x27;TEST&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">asyncF</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;TEST&#x27;</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="await">await</h3>
+<p>正常情况下，<code>await</code>命令后面是一个<code>Promise</code>对象，返回该对象的结果，如果不是<code>Promise</code>对象，就直接返回对应的值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">f</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> <span class="hljs-number">123</span>;<br>    <span class="hljs-comment">//等同于 return 123</span><br>&#125;<br><span class="hljs-title function_">f</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(v)) <span class="hljs-comment">//123</span><br></code></pre></td></tr></table></figure>
+<p>不管<code>await</code>后面跟着什么，<code>await</code>都会阻塞后面的代码(即加入微任务队列)</p>
 
                 
               </div>
@@ -372,8 +438,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JS中的闭包</div>
-      <div>https://blog.seasalt-haiyan.top/2024/04/18/JS中的闭包/</div>
+      <div>JavaScript中的事件循环</div>
+      <div>https://blog.seasalt-haiyan.top/2024/04/19/JavaScript中的事件循环/</div>
     </div>
     <div class="license-meta">
       
@@ -385,7 +451,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月18日</div>
+          <div>2024年4月19日</div>
         </div>
       
       
@@ -428,18 +494,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/19/JavaScript%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF/" title="JavaScript中的事件循环">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript中的事件循环</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/18/JS%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84this/" title="JS函数中的this">
-                        <span class="hidden-mobile">JS函数中的this</span>
+                      <a href="/2024/04/18/JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/" title="JS中的闭包">
+                        <span class="hidden-mobile">JS中的闭包</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
