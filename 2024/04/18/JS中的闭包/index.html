@@ -16,26 +16,26 @@
   <meta name="author" content="Xu Haoyang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="JavaScript（JS）是一种具有函数优先特性的轻量级、解释型或者说即时编译型的编程语言。具体地说，JavaScript 是一种基于原型、多范式、单线程的动态语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。">
+    <meta name="description" content="闭包（closure）是一个函数以及其捆绑的周边环境状态（lexical environment，词法环境）的引用的组合。换而言之，闭包让开发者可以从内部函数访问外部函数的作用域。在 JavaScript 中，闭包会随着函数的创建而被同时创建。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript基础">
-<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/03/03/JavaScript%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="JS中的闭包">
+<meta property="og:url" content="https://blog.seasalt-haiyan.top/2024/04/18/JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/index.html">
 <meta property="og:site_name" content="Seasalt-haiyan&#39;s Blog">
-<meta property="og:description" content="JavaScript（JS）是一种具有函数优先特性的轻量级、解释型或者说即时编译型的编程语言。具体地说，JavaScript 是一种基于原型、多范式、单线程的动态语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。">
+<meta property="og:description" content="闭包（closure）是一个函数以及其捆绑的周边环境状态（lexical environment，词法环境）的引用的组合。换而言之，闭包让开发者可以从内部函数访问外部函数的作用域。在 JavaScript 中，闭包会随着函数的创建而被同时创建。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/javascript.png">
-<meta property="article:published_time" content="2024-03-03T05:44:42.000Z">
-<meta property="article:modified_time" content="2024-03-03T06:35:01.233Z">
+<meta property="og:image" content="https://blog.seasalt-haiyan.top/image/closure.png">
+<meta property="article:published_time" content="2024-04-18T13:30:56.000Z">
+<meta property="article:modified_time" content="2024-04-19T08:21:41.549Z">
 <meta property="article:author" content="Xu Haoyang">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/javascript.png">
+<meta name="twitter:image" content="https://blog.seasalt-haiyan.top/image/closure.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>JavaScript基础 - Seasalt-haiyan&#39;s Blog</title>
+  <title>JS中的闭包 - Seasalt-haiyan&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JavaScript基础"></span>
+            <span id="subtitle" data-typed-text="JS中的闭包"></span>
           
         </div>
 
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-03-03 13:44" pubdate>
-          2024年3月3日 下午
+        <time datetime="2024-04-18 21:30" pubdate>
+          2024年4月18日 晚上
         </time>
       </span>
     
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          1k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          17 分钟
+          9 分钟
         
       </span>
     
@@ -280,12 +280,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JavaScript基础</h1>
+            <h1 id="seo-header">JS中的闭包</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2 个月前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -293,216 +293,40 @@
             
               <div class="markdown-body">
                 
-                <h1>Javascript简介</h1>
-<ul class="lvl-0">
-<li class="lvl-2">JavaScript 是一门跨平台、面向对象的脚本语言，它能使网页可交互（例如拥有复杂的动画，可点击的按钮，通俗的菜单等）。另外还有高级的服务端 Javascript 版本，例如 Node.js，它可以让你在网页上添加更多功能，不仅仅是下载文件（例如在多台电脑之间的协同合作）。在宿主环境（例如 web 浏览器）中，JavaScript 能够通过其所连接的环境提供的编程接口进行控制</li>
-<li class="lvl-2">JavaScript是一种动态弱类型语言</li>
-<li class="lvl-2">如今，JavaScript 已经成为了与 HTML/CSS 完全集成的，使用最广泛的浏览器语言</li>
-</ul>
-<h1>变量</h1>
-<p>我们可以用 var ，let 或 const 声明变量来存储数据</p>
-<ul class="lvl-0">
-<li class="lvl-2">
-<p>let - 现代的变量声明方式</p>
-</li>
-<li class="lvl-2">
-<p>var - 老旧的变量声明方式，一般情况下，我们不会再使用它。</p>
-</li>
-<li class="lvl-2">
-<p>const - 类似于let，但是变量的值无法被修改</p>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a=<span class="hljs-number">10</span>;<br><span class="hljs-keyword">var</span> a;<br><span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
-<h1>JavaScript标识符</h1>
-<p>所有JavaScript变量必须以<strong>唯一</strong>的名称为标识</p>
-<p>这些唯一的名称称为<strong>标识符</strong></p>
-<p>构造变量名称的通用规则是：</p>
-<ol>
-<li class="lvl-3">
-<p>名称可以包含字母，数字，下划线，和美元符号$</p>
-</li>
-<li class="lvl-3">
-<p>名称也可以以字母，$ 和 _ 开头</p>
-</li>
-<li class="lvl-3">
-<p>名称对大小写敏感（y和Y是两个变量）</p>
-</li>
-<li class="lvl-3">
-<p>保留字无法用做变量名称</p>
-</li>
-</ol>
-<h1>数据类型</h1>
-<p>JavaScript 有八种基本的数据类型（七种基本数据类型和一个复杂数据类型）</p>
+                <h2 id="闭包是什么？">闭包是什么？</h2>
+<p>一个函数和对其周围状态(lexical environment, 词法环境)的引用捆绑在一起(或者说函数被引用包围)，这样的组合就是闭包。</p>
+<p>也就是说，闭包让你可以在一个内层函数中访问到其外层函数的作用域</p>
+<p>在JS中，每创建一个函数，闭包就会在函数创建的同时创建出来，作为函数内部与外部连接起来的一座桥梁</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;Mozilla&quot;</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">displayName</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-title function_">alert</span>(name);<br>    &#125;<br>    <span class="hljs-title function_">displayName</span>();<br>&#125;<br><span class="hljs-title function_">init</span>();<br></code></pre></td></tr></table></figure>
+<p><code>displayName()</code>函数没有自己的局部变量。然后，由于闭包的特性，他可以访问到外部函数的变量</p>
+<p>《你不知道的JavaScript》: 当函数可以记住并访问所在的词法作用域时，就产生了闭包</p>
+<p><strong>词法作用域</strong>：指的是定义表达式并能被访问的区间，也就是一个声明（定义变量、函数等）的词法作用域就是它被<strong>定义</strong>时所在的作用域</p>
+<h2 id="闭包的经典使用场景">闭包的经典使用场景</h2>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>Number</p>
-<ul class="lvl-2">
-<li class="lvl-6">用于任何类型的数字：整数或浮点数，范围在±（253-1）范围内的整数</li>
-</ul>
+<p>return 回一个函数</p>
 </li>
 <li class="lvl-2">
-<p>BigInt</p>
-<ul class="lvl-2">
-<li class="lvl-4">用于任意长度的整数</li>
-</ul>
+<p>函数作为一个参数</p>
 </li>
 <li class="lvl-2">
-<p>String</p>
-<ul class="lvl-2">
-<li class="lvl-4">用于字符串，一个字符串可以包含0个或多个字符类型</li>
-</ul>
-</li>
-<li class="lvl-2">
-<p>Boolean</p>
-<ul class="lvl-2">
-<li class="lvl-4">用于true 和 false</li>
-<li class="lvl-4">true不一定等于1，false不一定等于0</li>
-</ul>
-</li>
-<li class="lvl-2">
-<p>Null</p>
-<ul class="lvl-2">
-<li class="lvl-4">表示未知值，只有一个null值的独立类型</li>
-<li class="lvl-4">null表示空对象指针</li>
-</ul>
-</li>
-<li class="lvl-2">
-<p>Undefined</p>
-<ul class="lvl-2">
-<li class="lvl-4">用于还没有定义的值——只有一个undefined值的独立类型</li>
-<li class="lvl-4">在使用var声明变量但是没有初始化时，这个变量就是undefined</li>
-</ul>
-</li>
-<li class="lvl-2">
-<p>Symbol</p>
-<ul class="lvl-2">
-<li class="lvl-4">用于唯一的标识符</li>
-</ul>
-</li>
-<li class="lvl-2">
-<p>Object</p>
-<ul class="lvl-2">
-<li class="lvl-4">用于更复杂的数据结构，比如function、array、date</li>
-</ul>
+<p>循环赋值</p>
 </li>
 </ul>
-<p><strong>我们可以使用typeof运算符查看数据类型</strong></p>
-<p><code>typeof x</code>或者<code>typeof(x)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>  data[i]();<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">5</span>;j++)&#123;<br>  data[j]()<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; i = <span class="hljs-number">9</span>; j &lt; <span class="hljs-number">5</span>; j++)&#123;<br>  data[j]();<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br></code></pre></td></tr></table></figure>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>会返回字符串类型，例如“string”<br>
-<code>typeof null</code>会返回“object”——这是js的错误，实际上它不是object</p>
+<p>防抖、节流</p>
 </li>
 </ul>
-<h1>值的比较</h1>
+<h2 id="闭包的危害">闭包的危害</h2>
 <ul class="lvl-0">
 <li class="lvl-2">
-<p>运算符</p>
+<p>容易造成内存泄漏</p>
 </li>
 </ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">运算符</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">==</td>
-<td style="text-align:center">比较两个操作数的值是否相等</td>
-</tr>
-<tr>
-<td style="text-align:center">!=</td>
-<td style="text-align:center">比较两个操作数的值是否不相等</td>
-</tr>
-<tr>
-<td style="text-align:center">===</td>
-<td style="text-align:center">比较两个操作数的值是否相等，同时检查类型是否相同</td>
-</tr>
-<tr>
-<td style="text-align:center">!==</td>
-<td style="text-align:center">比较两个操作数的值是否不相等，同时检查类型是否不相同</td>
-</tr>
-</tbody>
-</table>
-<p><strong>能不用<mark>就不用</mark>，尽量使用===来确保不会出现不可预料的错误</strong></p>
-<h1>类型转换</h1>
-<ol>
-<li class="lvl-3">
-<p>显式类型转换</p>
-<ol>
-<li class="lvl-6">将其他数据类型转换成String类型
-<ul class="lvl-4">
-<li class="lvl-10">
-<p>toString()</p>
-<p>该方法不会影响原来变量，它会将转换的结构返回。注意<strong>Null和Undefined没有toString方法</strong>，如果调用会报错</p>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;<br>a = a.<span class="hljs-title function_">toString</span>();<br></code></pre></td></tr></table></figure>
-<ul class="lvl-6">
-<li class="lvl-14">
-<p>String()<br>
-将被转换的数据作为参数传递给函数。使用String函数做类型强制转换时，对于Number和Boolean就是调用toString()方法，对于null和undefined，就不会调用toString()方法，它会将null直接转换成”null”，将undefined转换成”undefined”。</p>
-</li>
-</ul>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;<br>a = <span class="hljs-title class_">String</span>(a);<br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li class="lvl-7">将其他的数据类型转换为Number类型
-<ul class="lvl-4">
-<li class="lvl-10">Number()
-<ol>
-<li class="lvl-15">如果是纯数字的字符串，则直接将其转换为数字。</li>
-<li class="lvl-15">如果字符串中有非自数字的内容，则转换为NaN。</li>
-<li class="lvl-15">布尔类型转换成数字，true转成1，false转成0。</li>
-<li class="lvl-15">Null转成数字0。</li>
-<li class="lvl-15">Undefined转成数字NaN。</li>
-</ol>
-</li>
-<li class="lvl-10">parseInt(),parseFloat()
-<ol>
-<li class="lvl-15">parseInt()把一个字符串转换为一个整数，只取整数部分</li>
-<li class="lvl-15">parseFloat()把一个字符串转换为一个浮点数，可获得有效消暑；</li>
-<li class="lvl-15">对非String使用parseInt()或parseFloat()，它会将其转换为String。</li>
-</ol>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;123abc&#x27;</span>,<br><span class="hljs-keyword">var</span> b = <span class="hljs-string">&#x27;12.34.56ab&#x27;</span>;<br>a = <span class="hljs-built_in">parseInt</span>(a);<span class="hljs-comment">//a:123</span><br>b = <span class="hljs-built_in">parseFloat</span>(b);<span class="hljs-comment">//b:12.34</span><br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li class="lvl-7">将其他的数据类型转换为Boolean类型
-<ul class="lvl-4">
-<li class="lvl-10">Boolean()<br>
-1. 对于数字，0和NaN是false，其余的都是true。<br>
-2. 对于字符串，空串是false，其余的都是true。<br>
-3. 对于null和undefined，都是false。<br>
-4. 对于对象，都是true。</li>
-</ul>
-</li>
-</ol>
-</li>
-<li class="lvl-3">
-<p>隐式类型转换</p>
-<ol>
-<li class="lvl-6">转换为String类型
-<ul class="lvl-4">
-<li class="lvl-10">为任意的数据加一个空串</li>
-</ul>
-  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">123</span>;<br>a = a + <span class="hljs-string">&#x27; &#x27;</span> <span class="hljs-comment">//a: &quot;123&quot;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li class="lvl-7">转换为Number类型
-<ul class="lvl-4">
-<li class="lvl-10">在数据前面加一个+</li>
-</ul>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-string">&#x27;123&#x27;</span><br>a = +a <span class="hljs-comment">//a:123</span><br></code></pre></td></tr></table></figure>
-</li>
-<li class="lvl-7">转换为Boolean类型
-<ul class="lvl-4">
-<li class="lvl-9">为任意的数据取两次反</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span><br>a = !!a <span class="hljs-comment">//a:true</span><br></code></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ol>
+<p>内层函数调用的外部变量无法得到释放，会产生内存泄漏</p>
+<p>如果不是某些特定任务需要使用闭包，在其他函数中创建函数是不明智的，因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响</p>
 
                 
               </div>
@@ -548,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JavaScript基础</div>
-      <div>https://blog.seasalt-haiyan.top/2024/03/03/JavaScript基础/</div>
+      <div>JS中的闭包</div>
+      <div>https://blog.seasalt-haiyan.top/2024/04/18/JS中的闭包/</div>
     </div>
     <div class="license-meta">
       
@@ -561,13 +385,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年3月3日</div>
+          <div>2024年4月18日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2024年3月3日</div>
+          <div>2024年4月19日</div>
         </div>
       
       
@@ -604,18 +428,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/04/JavaScript%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/" title="JavaScript函数基础">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaScript函数基础</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/02/CSS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="CSS基础知识">
-                        <span class="hidden-mobile">CSS基础知识</span>
+                      <a href="/2024/04/18/JS%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84this/" title="JS函数中的this">
+                        <span class="hidden-mobile">JS函数中的this</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

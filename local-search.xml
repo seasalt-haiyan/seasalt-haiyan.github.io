@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>JS中的闭包</title>
+    <link href="/2024/04/18/JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/"/>
+    <url>/2024/04/18/JS%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85/</url>
+    
+    <content type="html"><![CDATA[<h2 id="闭包是什么？">闭包是什么？</h2><p>一个函数和对其周围状态(lexical environment, 词法环境)的引用捆绑在一起(或者说函数被引用包围)，这样的组合就是闭包。</p><p>也就是说，闭包让你可以在一个内层函数中访问到其外层函数的作用域</p><p>在JS中，每创建一个函数，闭包就会在函数创建的同时创建出来，作为函数内部与外部连接起来的一座桥梁</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">init</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-keyword">var</span> name = <span class="hljs-string">&quot;Mozilla&quot;</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">displayName</span>(<span class="hljs-params"></span>)&#123;<br>        <span class="hljs-title function_">alert</span>(name);<br>    &#125;<br>    <span class="hljs-title function_">displayName</span>();<br>&#125;<br><span class="hljs-title function_">init</span>();<br></code></pre></td></tr></table></figure><p><code>displayName()</code>函数没有自己的局部变量。然后，由于闭包的特性，他可以访问到外部函数的变量</p><p>《你不知道的JavaScript》: 当函数可以记住并访问所在的词法作用域时，就产生了闭包</p><p><strong>词法作用域</strong>：指的是定义表达式并能被访问的区间，也就是一个声明（定义变量、函数等）的词法作用域就是它被<strong>定义</strong>时所在的作用域</p><h2 id="闭包的经典使用场景">闭包的经典使用场景</h2><ul class="lvl-0"><li class="lvl-2"><p>return 回一个函数</p></li><li class="lvl-2"><p>函数作为一个参数</p></li><li class="lvl-2"><p>循环赋值</p></li></ul><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>  data[i]();<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">5</span>;j++)&#123;<br>  data[j]()<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br><span class="hljs-keyword">var</span> data = []<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>  data[i] = <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(i);<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>; i = <span class="hljs-number">9</span>; j &lt; <span class="hljs-number">5</span>; j++)&#123;<br>  data[j]();<br>&#125;<br><span class="hljs-comment">//0 1 2 3 4</span><br></code></pre></td></tr></table></figure><ul class="lvl-0"><li class="lvl-2"><p>防抖、节流</p></li></ul><h2 id="闭包的危害">闭包的危害</h2><ul class="lvl-0"><li class="lvl-2"><p>容易造成内存泄漏</p></li></ul><p>内层函数调用的外部变量无法得到释放，会产生内存泄漏</p><p>如果不是某些特定任务需要使用闭包，在其他函数中创建函数是不明智的，因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>前端学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JavaScript</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JS函数中的this</title>
     <link href="/2024/04/18/JS%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84this/"/>
     <url>/2024/04/18/JS%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84this/</url>
